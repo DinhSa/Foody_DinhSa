@@ -81,7 +81,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         tvHeader.setText(data);
 
         Button btnSoDuong = (Button)view.findViewById(R.id.btnSoDuong);
-        btnSoDuong.setText(getChildrenCount(groupPosition) + " đường  >");
+        btnSoDuong.setText(getChildrenCount(groupPosition) + " đường");
         btnSoDuong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

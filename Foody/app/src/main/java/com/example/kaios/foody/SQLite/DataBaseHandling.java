@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.example.kaios.foody.MonAn;
 import com.example.kaios.foody.QuanAn;
 
 import java.io.File;
@@ -107,7 +108,7 @@ public class DataBaseHandling extends SQLiteOpenHelper {
         // Select All Query
         ArrayList<String> alDept = new ArrayList<>();
         alDept.clear();
-        String sql= "SELECT TenQuan FROM QuanHuyen";
+        String sql= "SELECT TenQuan FROM QuanHuyen WHERE MaTP= 0";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
@@ -179,4 +180,37 @@ public class DataBaseHandling extends SQLiteOpenHelper {
         c.close();
         return listQuanAn;
     }
+
+    public ArrayList<MonAn> getMonAn(){
+        ArrayList<MonAn> listMonAn = new ArrayList<>();
+        listMonAn.clear();
+        String sql= "SELECT TenMonAn, TenQuanAn, DiaChi, TenDuong, MonAn.HinhAnh\n" +
+                "FROM MonAn, QuanAn, DuongQuan\n" +
+                "WHERE  MonAn.MaQuanAn=QuanAn.MaQuanAn\n" +
+                "and DuongQuan.MaDuong=QuanAn.MaDuong\n" +
+                "and QuanAn.MaDanhMuc=1";
+
+        //thực thi lệnh sql
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                String tenMonAn = c.getString(0);
+                String tenQuan = c.getString(1);
+                String diachi = c.getString(2);
+                String tenduong = c.getString(3);
+                byte[] hinhMonAn = c.getBlob(4);
+                Bitmap bmp_hinhMonAn = BitmapFactory.decodeByteArray(hinhMonAn, 0, hinhMonAn.length);
+
+                listMonAn.add(new MonAn(bmp_hinhMonAn, tenMonAn, tenQuan, diachi, tenduong));
+            } while (c.moveToNext());
+        }
+
+        db.close();
+        c.close();
+        return listMonAn;
+    }
+
 }

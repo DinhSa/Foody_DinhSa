@@ -49,6 +49,7 @@ public class TabActivity_3_angi extends Fragment {
             @Override
             public void onClick(View v) {
                 fragment_angi.mTabHost.setCurrentTab(0);
+                fragment_angi.click3=false;
                 MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện BottomBar khi bấm hủy
             }
         });

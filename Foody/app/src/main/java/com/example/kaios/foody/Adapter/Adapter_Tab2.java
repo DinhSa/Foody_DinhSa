@@ -7,24 +7,24 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kaios.foody.R;
 
 public class Adapter_Tab2 extends BaseAdapter {
-    //public static String nametab2="Mới Nhất";
     String [] result;
     Context context;
     int [] imageId;
     private static LayoutInflater inflater=null;
 
-//    public Adapter_Tab2(){}
+    public Adapter_Tab2(){}
 
     public Adapter_Tab2(Context mainActivity, String[] prgmNameList, int[] prgmImages) {
         // TODO Auto-generated constructor stub
-        result=prgmNameList;
-        context=mainActivity;
-        imageId=prgmImages;
-        inflater = ( LayoutInflater )context.
+        this.result=prgmNameList;
+        this.context=mainActivity;
+        this.imageId=prgmImages;
+        this.inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
@@ -67,7 +67,7 @@ public class Adapter_Tab2 extends BaseAdapter {
 //                nametab2=result[position];
 //                fragment_odau.mTabHost.setCurrentTab(0);
 //                MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện lại BottomBar khi tắt listView
-                //Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
             }
         });
         return rowView;

@@ -8,15 +8,15 @@
     tools:context="com.example.kaios.foody.MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:orientation="vertical">
 
         <FrameLayout
             android:id="@+id/frame_layout_main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
+            android:layout_weight="9.2"
             android:layout_above="@+id/bottom_bar">
 
         </FrameLayout>
@@ -25,12 +25,11 @@
             android:id="@+id/bottom_bar"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:layout_alignParentBottom="true"
+            android:layout_weight="0.6"
             android:background="@color/colorWhite"
+            app:bb_behavior="iconsOnly"
+            app:bb_showShadow="false"
             app:bb_tabXmlResource="@xml/dummy_tabs_five">
-
         </com.roughike.bottombar.BottomBar>
-
     </LinearLayout>
 </RelativeLayout>

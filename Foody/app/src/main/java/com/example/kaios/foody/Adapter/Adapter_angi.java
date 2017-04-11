@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.kaios.foody.QuanAn;
+import com.example.kaios.foody.MonAn;
 import com.example.kaios.foody.R;
 
 import java.util.List;
 
 /**
- * Created by kaios on 4/10/2017.
+ * Created by kaios on 4/11/2017.
  */
 
-public class Adapter_angi_odau extends RecyclerView.Adapter< RecyclerView.ViewHolder> {
+public class Adapter_angi extends RecyclerView.Adapter< RecyclerView.ViewHolder> {
 
     private static final int HEADER = 0;
     private static final int DANHMUC = 1;
@@ -27,15 +27,15 @@ public class Adapter_angi_odau extends RecyclerView.Adapter< RecyclerView.ViewHo
     private int imgHeader;
     private int[] imgdanhmuc;
     private String[] tvdanhmuc;
-    private List<QuanAn> listQuanAn;
+    private List<MonAn> listMonAn;
 
-    public Adapter_angi_odau(Context context, int imgHeader, int[] imgDanhMuc, String[] tvDanhMuc,
-                             List<QuanAn> listQuanAn) {
+    public Adapter_angi(Context context, int imgHeader, int[] imgDanhMuc, String[] tvDanhMuc,
+                             List<MonAn> listMonAn) {
         this.context=context;
         this.imgHeader=imgHeader;
         this.imgdanhmuc=imgDanhMuc;
         this.tvdanhmuc=tvDanhMuc;
-        this.listQuanAn=listQuanAn;
+        this.listMonAn=listMonAn;
 
     }
 
@@ -44,13 +44,13 @@ public class Adapter_angi_odau extends RecyclerView.Adapter< RecyclerView.ViewHo
         RecyclerView.ViewHolder viewHolder;
         if (viewType == HEADER) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.imageview_header, parent, false);
-            viewHolder = new HeaderItem(view);
+            viewHolder = new Adapter_angi.HeaderItem(view);
         } else if (viewType == DANHMUC){
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.girdview_danhmuc, parent, false);
-            viewHolder = new DanhMucItem(view);
+            viewHolder = new Adapter_angi.DanhMucItem(view);
         } else {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.body_odau, parent, false);
-            viewHolder = new DataQuan(view);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.body_angi, parent, false);
+            viewHolder = new Adapter_angi.DataQuan(view);
         }
 
         return viewHolder;
@@ -59,27 +59,27 @@ public class Adapter_angi_odau extends RecyclerView.Adapter< RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        if (holder instanceof HeaderItem) {
-            HeaderItem mHolder = (HeaderItem)holder;
+        if (holder instanceof Adapter_angi.HeaderItem) {
+            Adapter_angi.HeaderItem mHolder = (Adapter_angi.HeaderItem)holder;
             mHolder.img_quangcao.setImageResource(imgHeader);
         } else
-        if (holder instanceof DanhMucItem){
-            DanhMucItem mHolder = (DanhMucItem) holder;
+        if (holder instanceof Adapter_angi.DanhMucItem){
+            Adapter_angi.DanhMucItem mHolder = (Adapter_angi.DanhMucItem) holder;
             mHolder.img_DanhMuc.setImageResource(imgdanhmuc[position - 1]);
             mHolder.tv_DanhMuc.setText(tvdanhmuc[position - 1]);
         } else {
-            DataQuan mHolder = (DataQuan) holder;
-            QuanAn item = listQuanAn.get(position - tvdanhmuc.length - 1);
-            mHolder.tvDiemQuan.setText(item.getTvDiem());
-            mHolder.tvTenQuan.setText(item.getTvTen());
-            mHolder.tvDiaDiem.setText(item.getTvDiaDiem() + ", " + item.getTvThanhPho());
-            mHolder.imgODau.setImageBitmap(item.getImgHinh());
+            Adapter_angi.DataQuan mHolder = (Adapter_angi.DataQuan) holder;
+            MonAn item = listMonAn.get(position - tvdanhmuc.length - 1);
+            mHolder.imgAnGi.setImageBitmap(item.getImgHinhMonAn());
+            mHolder.tvTenMon.setText(item.getTvTenMonAn());
+            mHolder.tvTenQuan.setText(item.getTvTenQuanMonAn());
+            mHolder.tvDiaChi.setText(item.getTvDiaDiemQuanMonAn() + ", " + item.getTvTenDuong());
         }
     }
 
     @Override
     public int getItemCount() {
-        return 1 + tvdanhmuc.length+ listQuanAn.size();
+        return 1 + tvdanhmuc.length+ listMonAn.size();
     }
 
     @Override
@@ -116,16 +116,16 @@ public class Adapter_angi_odau extends RecyclerView.Adapter< RecyclerView.ViewHo
     }
 
     public class DataQuan extends RecyclerView.ViewHolder {
+        private TextView tvTenMon;
+        private TextView tvDiaChi;
         private TextView tvTenQuan;
-        private TextView tvDiemQuan;
-        private TextView tvDiaDiem;
-        private ImageView imgODau;
+        private ImageView imgAnGi;
         public DataQuan(View itemView) {
             super(itemView);
-            tvDiaDiem = (TextView) itemView.findViewById(R.id.tvdiadiem);
-            tvDiemQuan = (TextView) itemView.findViewById(R.id.tvdiem);
-            tvTenQuan = (TextView) itemView.findViewById(R.id.tvtenquan);
-            imgODau = (ImageView) itemView.findViewById(R.id.imgOdau);
+            tvTenQuan = (TextView) itemView.findViewById(R.id.tvTenQuan);
+            tvDiaChi = (TextView) itemView.findViewById(R.id.tvDiaChi);
+            tvTenMon = (TextView) itemView.findViewById(R.id.tvTenMon);
+            imgAnGi = (ImageView) itemView.findViewById(R.id.imgAngi);
         }
     }
 }

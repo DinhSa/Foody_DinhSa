@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.kaios.foody.Adapter.Adapter_angi_odau;
-import com.example.kaios.foody.QuanAn;
+import com.example.kaios.foody.Adapter.Adapter_angi;
+import com.example.kaios.foody.MonAn;
 import com.example.kaios.foody.R;
 import com.example.kaios.foody.SQLite.DataBaseHandling;
 
@@ -20,9 +20,9 @@ public class TabActivity_angi extends Fragment {
 
 
     private RecyclerView recyclerView;
-    private Adapter_angi_odau AdapterRecy;
+    private Adapter_angi AdapterRecy;
     private int imgHeader = R.drawable.qc;
-    private ArrayList<QuanAn> listQuanAn;
+    private ArrayList<MonAn> listMonAn;
 
     private int[] imgdanhmuc ={R.drawable.gantoi,R.drawable.cou,R.drawable.datcho,
             R.drawable.datgiaohang,R.drawable.ecard,R.drawable.game,
@@ -47,13 +47,13 @@ public class TabActivity_angi extends Fragment {
             @Override
             public int getSpanSize(int position) {
 
-                return position == 0 ? 2 : position <= 11 ? 1 : 2;
+                return position == 0 ? 2 : position <= 10 ? 1 : 1;
             }
         });
         recyclerView.setLayoutManager(layoutManager);
 
         loadData();
-        AdapterRecy = new Adapter_angi_odau(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listQuanAn);
+        AdapterRecy = new Adapter_angi(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listMonAn);
         recyclerView.setAdapter(AdapterRecy);
         AdapterRecy.notifyDataSetChanged();
 
@@ -63,7 +63,7 @@ public class TabActivity_angi extends Fragment {
     public void loadData(){
         DataBaseHandling db = new DataBaseHandling(getContext());
         db.openDataBase();
-        listQuanAn=db.getQuanAn();
+        listMonAn=db.getMonAn();
 
     }
 

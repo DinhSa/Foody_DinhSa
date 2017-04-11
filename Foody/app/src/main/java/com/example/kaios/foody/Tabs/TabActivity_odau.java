@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.kaios.foody.Adapter.Adapter_angi_odau;
+import com.example.kaios.foody.Adapter.Adapter_odau;
 import com.example.kaios.foody.QuanAn;
 import com.example.kaios.foody.R;
 import com.example.kaios.foody.SQLite.DataBaseHandling;
@@ -20,7 +20,7 @@ public class TabActivity_odau extends Fragment {
 
 
     private RecyclerView recyclerView;
-    private Adapter_angi_odau AdapterRecy;
+    private Adapter_odau AdapterRecy;
     private int imgHeader = R.drawable.qc;
     private ArrayList<QuanAn> listQuanAn;
 
@@ -53,7 +53,7 @@ public class TabActivity_odau extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         loadData();
-        AdapterRecy = new Adapter_angi_odau(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listQuanAn);
+        AdapterRecy = new Adapter_odau(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listQuanAn);
         recyclerView.setAdapter(AdapterRecy);
         AdapterRecy.notifyDataSetChanged();
 

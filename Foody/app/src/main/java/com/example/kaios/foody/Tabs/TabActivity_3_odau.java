@@ -49,6 +49,7 @@ public class TabActivity_3_odau extends Fragment {
             @Override
             public void onClick(View v) {
                 fragment_odau.mTabHost.setCurrentTab(0);
+                fragment_odau.click3=false;
                 MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện BottomBar khi bấm hủy
             }
         });

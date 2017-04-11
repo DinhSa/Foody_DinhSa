@@ -2,6 +2,7 @@ package com.example.kaios.foody.Fragment_main;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -9,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kaios.foody.Fragment_angi_odau.fragment_angi;
@@ -68,6 +70,20 @@ public class Fragment_home extends Fragment {
             }
         });
 
+
+        //sự kiện click Plus
+        ImageView btnPlus=(ImageView)v.findViewById(R.id.imgPlus);
+        btnPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+                View bottomSheetView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_plus,null);
+                bottomSheetDialog.setContentView(bottomSheetView);
+                bottomSheetDialog.show();
+            }
+        });
+
+
         return v;
     }
 
@@ -119,5 +135,7 @@ public class Fragment_home extends Fragment {
             return 2;
         }
     }
+
+
 
 }
