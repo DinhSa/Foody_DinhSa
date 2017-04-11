@@ -3,11 +3,42 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2"
+        android:background="@color/colorGray"
+        android:padding="7dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="0dp"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="TP.HCM"
+            android:padding="5dp"
+            android:textColor="@color/colorBlack"
+            android:textStyle="normal|bold" />
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="34dp"
+            android:id="@+id/tp"
+            android:text="Đổi thành phố"
+            android:textAllCaps="false"
+            android:background="#e7e7e7"
+            android:textColor="#8f8f8f" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="13"
+        android:layout_weight="11.8"
         android:background="@color/colorGray">
         <ExpandableListView
             android:id="@+id/expan"
@@ -29,9 +60,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Hủy"
+            android:textSize="17dp"
             android:background="@color/colorWhite"
             android:textAllCaps="false"
-            android:textColor="?android:attr/colorControlNormal" />
+            android:textColor="#504f4f" />
     </LinearLayout>
 
 </LinearLayout>

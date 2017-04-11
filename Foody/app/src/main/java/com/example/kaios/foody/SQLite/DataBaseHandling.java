@@ -5,6 +5,10 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import com.example.kaios.foody.QuanAn;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,7 +27,7 @@ public class DataBaseHandling extends SQLiteOpenHelper {
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
-    private static final String DATABASE_NAME = "dbFoody.sqlite";
+    private static final String DATABASE_NAME = "QuanLyFoodyDB.sqlite";
     private static final String DB_PATH_SUFFIX = "/databases/";
     static Context ctx;
     public DataBaseHandling(Context context) {
@@ -103,7 +107,7 @@ public class DataBaseHandling extends SQLiteOpenHelper {
         // Select All Query
         ArrayList<String> alDept = new ArrayList<>();
         alDept.clear();
-        String sql= "SELECT tenQH FROM tbQuanHuyen";
+        String sql= "SELECT TenQuan FROM QuanHuyen";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
@@ -127,8 +131,8 @@ public class DataBaseHandling extends SQLiteOpenHelper {
         ArrayList<String> alEmp = new ArrayList<>();
         alEmp.clear();
         String sql = "SELECT TenDuong\n" +
-                "FROM tbQuanHuyen inner join tbDuongPho on tbQuanHuyen.id=tbDuongPho.idQuanHuyen\n" +
-                "WHERE TenQH='" + tenquan + "'";
+                "FROM QuanHuyen inner join DuongQuan on QuanHuyen.MaQuan=DuongQuan.MaQuan\n" +
+                "WHERE TenQuan='" + tenquan + "'";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
@@ -144,5 +148,35 @@ public class DataBaseHandling extends SQLiteOpenHelper {
         db.close();
         c.close();
         return alEmp;
+    }
+
+    //get quán ăn
+    public ArrayList<QuanAn> getQuanAn(){
+        ArrayList<QuanAn> listQuanAn = new ArrayList<>();
+        listQuanAn.clear();
+        String sql= "SELECT TenQuanAn, DiaChi, TenDuong, DiemQuan, HinhAnh\n" +
+                "FROM DuongQuan inner join QuanAn on DuongQuan.MaDuong=QuanAn.MaDuong\n" +
+                "WHERE QuanAn.MaDanhMuc=1";
+
+        //thực thi lệnh sql
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                String tenQuan = c.getString(0);
+                String diachiQuan = c.getString(1);
+                String tenThanhPho = c.getString(2);
+                String diemQuan = c.getString(3);
+                byte[] hinhQuan = c.getBlob(4);
+                Bitmap bmp_hinhQuan = BitmapFactory.decodeByteArray(hinhQuan, 0, hinhQuan.length);
+                listQuanAn.add(new QuanAn(diemQuan, tenQuan, diachiQuan, tenThanhPho, bmp_hinhQuan));
+            } while (c.moveToNext());
+        }
+
+        db.close();
+        c.close();
+        return listQuanAn;
     }
 }

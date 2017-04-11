@@ -6,47 +6,42 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
 
+import com.example.kaios.foody.Adapter.ExpandableListViewAdapter;
 import com.example.kaios.foody.Fragment_angi_odau.fragment_angi;
 import com.example.kaios.foody.MainActivity;
 import com.example.kaios.foody.R;
+import com.example.kaios.foody.SQLite.DataBaseHandling;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 
 public class TabActivity_3_angi extends Fragment {
+
+    ExpandableListViewAdapter elva;
+    ExpandableListView expan;
+    ArrayList<String> tenquan;
+    HashMap<String, ArrayList<String>> tenduong;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.tabs_layout, container, false);
-        ListView mainListView = (ListView)v.findViewById( R.id.mainListView );
 
-// Create and populate a List of planet names.
-        String[] planets = new String[] { "Tp.HCM", "Quận 1", "Quận 2", "Quận 3",
-                "Quận 4", "Quận 5", "Quận 6", "Quận 7"};
+        View v = inflater.inflate(R.layout.tab3, container, false);
 
-        ArrayList<String> planetList = new ArrayList<String>();
-        planetList.addAll( Arrays.asList(planets) );
 
-        // Create ArrayAdapter using the planet list.
-        ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(getActivity(), R.layout.custom_listview_tab3, planetList);
+        // Tham chiếu ExpandableListView
+        expan = (ExpandableListView)v.findViewById(R.id.expan);
+        // Đọc dữ liệu từ SQLite
+        loadData();
+        elva = new ExpandableListViewAdapter(getContext(), tenquan, tenduong);
+        // Chỉ định Adapter cho ExpandableListView
+        expan.setAdapter(elva);
 
-        // Add more planets. If you passed a String[] instead of a List<String>
-        // into the ArrayAdapter constructor, you must not add more items.
-        // Otherwise an exception will occur.
-        listAdapter.add( "Quân 8" );
-        listAdapter.add( "Quân 9" );
-        listAdapter.add( "Quân 10" );
-        listAdapter.add( "Quân 11" );
-        listAdapter.add( "Quân 12" );
 
-        // Set the ArrayAdapter as the ListView's adapter.
-        mainListView.setAdapter( listAdapter );
 
         ///Click button Hủy trở về tab chính
         Button btn=(Button) v.findViewById(R.id.btnhuy);
@@ -58,7 +53,27 @@ public class TabActivity_3_angi extends Fragment {
             }
         });
 
-
         return v;
+    }
+
+
+    //load Data
+    private void loadData() {
+        DataBaseHandling db = new DataBaseHandling(getContext());
+        db.openDataBase();
+        tenduong = new HashMap<String, ArrayList<String>>();
+
+        // Dữ liệu cho header được lấy từ bảng tbTenQuan
+        tenquan = db.getTenQuan();
+
+        for(int i=0;i<tenquan.size();i++){
+            // Dữ liệu tương ứng với mỗi header được lấy từ bảng tbTenDuong
+            ArrayList<String> itItem = new ArrayList<String>();
+            itItem = db.getTenDuong(tenquan.get(i));
+
+            tenduong.put(tenquan.get(i), itItem); // Header, Child data
+
+        }
+
     }
 }

@@ -3,52 +3,68 @@ package com.example.kaios.foody.Tabs;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.kaios.foody.Adapter.Adapter_angi_odau;
+import com.example.kaios.foody.QuanAn;
 import com.example.kaios.foody.R;
+import com.example.kaios.foody.SQLite.DataBaseHandling;
+
+import java.util.ArrayList;
 
 public class TabActivity_angi extends Fragment {
-    private FragmentActivity myContext;
 
+
+    private RecyclerView recyclerView;
+    private Adapter_angi_odau AdapterRecy;
+    private int imgHeader = R.drawable.qc;
+    private ArrayList<QuanAn> listQuanAn;
+
+    private int[] imgdanhmuc ={R.drawable.gantoi,R.drawable.cou,R.drawable.datcho,
+            R.drawable.datgiaohang,R.drawable.ecard,R.drawable.game,
+            R.drawable.binhluan,R.drawable.blog,R.drawable.topthanhvien,
+            R.drawable.video};
+    private String[] tvdanhmuc ={"Gần tôi","Coupon","Đặt chỗ ưu đãi","Đặt giao hàng","E-card",
+            "Game & Fun","Bình Luận", "Blogs","Top thành viên","Video"};
+
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.tab_activity_angi, container, false);
-//        BottomNavigationView bottomNavigationView = (BottomNavigationView)v.findViewById(R.id.bottom_navigation);
-//        bottomNavigationView.setOnNavigationItemSelectedListener
-//                (new BottomNavigationView.OnNavigationItemSelectedListener() {
-//                    @Override
-//                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                        //Fragment selectedFragment = null;
-//                        switch (item.getItemId()) {
-//                            case R.id.action_favorites:
-//                                //selectedFragment = NV_trangchu_odau.newInstance();
-//                                break;
-//                            case R.id.action_schedules:
-//                                //selectedFragment = NV_bosuutap.newInstance();
-//                                break;
-//                            case R.id.action_music:
-//                                //selectedFragment = NV_Timkiem   .newInstance();
-//                                break;
-//
-//
-//                        }
-////                        FragmentTransaction transaction = myContext.getSupportFragmentManager().beginTransaction();
-////                        transaction.replace(R.id.myScrollingContent, selectedFragment);
-////                        transaction.commit();
-//                        return true;
-//                    }
-//                });
-//        //Manually displaying the first fragment - one time only
-//        FragmentTransaction transaction = myContext.getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.frame_layout_angi, NV_trangchu_angi.newInstance());
-//        transaction.commit();
+
+        recyclerView = (RecyclerView)v.findViewById(R.id.rc_angi);
+        recyclerView.setHasFixedSize(true);
+
+        //chia thành 2 cột
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+
+                return position == 0 ? 2 : position <= 11 ? 1 : 2;
+            }
+        });
+        recyclerView.setLayoutManager(layoutManager);
+
+        loadData();
+        AdapterRecy = new Adapter_angi_odau(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listQuanAn);
+        recyclerView.setAdapter(AdapterRecy);
+        AdapterRecy.notifyDataSetChanged();
+
         return v;
     }
 
+    public void loadData(){
+        DataBaseHandling db = new DataBaseHandling(getContext());
+        db.openDataBase();
+        listQuanAn=db.getQuanAn();
+
+    }
 
 }

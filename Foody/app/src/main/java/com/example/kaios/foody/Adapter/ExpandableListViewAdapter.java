@@ -5,11 +5,12 @@ package com.example.kaios.foody.Adapter;
  */
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.example.kaios.foody.R;
@@ -67,7 +68,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int groupPosition, boolean b, View view, ViewGroup viewGroup) {
+    public View getGroupView(final int groupPosition, final boolean b, View view, final ViewGroup viewGroup) {
         String data = (String) getGroup(groupPosition);
         if (view == null) {
             LayoutInflater li = (LayoutInflater) this._context
@@ -76,8 +77,20 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         }
 
         TextView tvHeader = (TextView) view.findViewById(R.id.tvHeader);
-        tvHeader.setTypeface(null, Typeface.BOLD);
+        //tvHeader.setTypeface(null, Typeface.BOLD);
         tvHeader.setText(data);
+
+        Button btnSoDuong = (Button)view.findViewById(R.id.btnSoDuong);
+        btnSoDuong.setText(getChildrenCount(groupPosition) + " đường  >");
+        btnSoDuong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (b)
+                    ((ExpandableListView) viewGroup).collapseGroup(groupPosition);
+                else
+                    ((ExpandableListView) viewGroup).expandGroup(groupPosition);
+            }
+        });
 
         return view;
     }

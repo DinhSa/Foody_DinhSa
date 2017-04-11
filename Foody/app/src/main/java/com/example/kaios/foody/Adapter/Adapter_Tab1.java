@@ -11,11 +11,15 @@ import android.widget.TextView;
 import com.example.kaios.foody.R;
 
 public class Adapter_Tab1 extends BaseAdapter {
-    public static String nametab1="Mới Nhất";
+    //public static String nametab1="Mới Nhất";
+
     String [] result;
     Context context;
     int [] imageId;
     private static LayoutInflater inflater=null;
+
+//    public Adapter_Tab1(){}
+
     public Adapter_Tab1(Context mainActivity, String[] prgmNameList, int[] prgmImages) {
         // TODO Auto-generated constructor stub
         result=prgmNameList;

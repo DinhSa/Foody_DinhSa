@@ -27,9 +27,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Hủy"
+            android:textSize="17dp"
             android:background="@color/colorWhite"
             android:textAllCaps="false"
-            android:textColor="?android:attr/colorControlNormal" />
+            android:textColor="#504f4f" />
     </LinearLayout>
 
 </LinearLayout>
