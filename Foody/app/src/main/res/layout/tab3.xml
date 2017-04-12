@@ -8,7 +8,6 @@
         android:layout_height="0dp"
         android:layout_weight="1.2"
         android:background="@color/colorGray"
-        android:padding="7dp"
         android:orientation="horizontal">
 
         <TextView
@@ -18,20 +17,29 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:text="TP.HCM"
-            android:padding="5dp"
+            android:paddingLeft="5dp"
             android:textColor="@color/colorBlack"
             android:textStyle="normal|bold" />
 
-
-        <Button
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1.3"
             android:layout_height="match_parent"
-            android:id="@+id/tp"
-            android:text="Đổi thành phố"
-            android:textAllCaps="false"
-            android:background="#e7e7e7"
-            android:textColor="#8f8f8f" />
+            android:padding="10dp">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tp"
+                android:text="Đổi thành phố"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:background="#e7e7e7"
+                android:textColor="#8f8f8f" />
+
+        </LinearLayout>
+
+
+
 
     </LinearLayout>
 
