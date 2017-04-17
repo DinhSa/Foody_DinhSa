@@ -102,13 +102,15 @@ public class DataBaseHandling extends SQLiteOpenHelper {
 
 
 
-
     // Getting All Department
-    public ArrayList<String> getTenQuan() {
+    public ArrayList<String> getTenQuan(String TenThanhPho) {
         // Select All Query
         ArrayList<String> alDept = new ArrayList<>();
         alDept.clear();
-        String sql= "SELECT TenQuan FROM QuanHuyen WHERE MaTP= 0";
+        String sql= "SELECT TenQuan\n"+
+                "FROM QuanHuyen, ThanhPho\n"+
+                "WHERE QuanHuyen.MaTP=ThanhPho.MaTP\n"+
+                "AND TenTP='"+ TenThanhPho+"'";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
@@ -152,13 +154,13 @@ public class DataBaseHandling extends SQLiteOpenHelper {
     }
 
     //get quán ăn
-    public ArrayList<QuanAn> getQuanAn(){
+    public ArrayList<QuanAn> getQuanAn(String danhmuc){
         ArrayList<QuanAn> listQuanAn = new ArrayList<>();
         listQuanAn.clear();
         String sql= "SELECT TenQuanAn, DiaChi, TenDuong, DiemQuan, HinhAnh\n" +
-                "FROM DuongQuan inner join QuanAn on DuongQuan.MaDuong=QuanAn.MaDuong\n" +
-                "WHERE QuanAn.MaDanhMuc=1";
-
+                "FROM DuongQuan, QuanAN, DanhMuc WHERE DuongQuan.MaDuong=QuanAn.MaDuong\n" +
+                "AND DanhMuc.MaDanhMuc=QuanAn.MaDanhMuc\n"+
+                "AND DanhMuc.TenDanhMuc= '"+danhmuc+"'";
         //thực thi lệnh sql
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(sql, null);
@@ -181,14 +183,16 @@ public class DataBaseHandling extends SQLiteOpenHelper {
         return listQuanAn;
     }
 
-    public ArrayList<MonAn> getMonAn(){
+    //get Món Ăn
+    public ArrayList<MonAn> getMonAn(String danhmucMonAn){
         ArrayList<MonAn> listMonAn = new ArrayList<>();
         listMonAn.clear();
         String sql= "SELECT TenMonAn, TenQuanAn, DiaChi, TenDuong, MonAn.HinhAnh\n" +
-                "FROM MonAn, QuanAn, DuongQuan\n" +
+                "FROM MonAn, QuanAn, DuongQuan, DanhMuc\n" +
                 "WHERE  MonAn.MaQuanAn=QuanAn.MaQuanAn\n" +
                 "and DuongQuan.MaDuong=QuanAn.MaDuong\n" +
-                "and QuanAn.MaDanhMuc=1";
+                "and QuanAn.MaDanhMuc=DanhMuc.MaDanhMuc\n"+
+                "and DanhMuc.TenDanhMuc='"+danhmucMonAn+"'";
 
         //thực thi lệnh sql
         SQLiteDatabase db = this.getReadableDatabase();
@@ -213,4 +217,26 @@ public class DataBaseHandling extends SQLiteOpenHelper {
         return listMonAn;
     }
 
+    //get Thành Phố
+    public ArrayList<String> getTinhThanh() {
+        // Select All Query
+        ArrayList<String> TinhThanh = new ArrayList<>();
+        TinhThanh.clear();
+        String sql= "SELECT TenTp FROM ThanhPho";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                // Adding Department to list
+                TinhThanh.add(c.getString(0));
+            } while (c.moveToNext());
+        }
+
+        db.close();
+        c.close();
+        return TinhThanh;
+    }
 }

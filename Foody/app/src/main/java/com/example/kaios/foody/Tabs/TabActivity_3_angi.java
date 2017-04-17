@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 
+import com.example.kaios.foody.Adapter.Adapter_DoiTP;
 import com.example.kaios.foody.Adapter.ExpandableListViewAdapter;
 import com.example.kaios.foody.Fragment_angi_odau.fragment_angi;
 import com.example.kaios.foody.MainActivity;
@@ -36,7 +37,7 @@ public class TabActivity_3_angi extends Fragment {
         // Tham chiếu ExpandableListView
         expan = (ExpandableListView)v.findViewById(R.id.expan);
         // Đọc dữ liệu từ SQLite
-        loadData();
+        loadData(Adapter_DoiTP.nameTP);
         elva = new ExpandableListViewAdapter(getContext(), tenquan, tenduong);
         // Chỉ định Adapter cho ExpandableListView
         expan.setAdapter(elva);
@@ -59,13 +60,13 @@ public class TabActivity_3_angi extends Fragment {
 
 
     //load Data
-    private void loadData() {
+    private void loadData(String TenThanhPho) {
         DataBaseHandling db = new DataBaseHandling(getContext());
         db.openDataBase();
         tenduong = new HashMap<String, ArrayList<String>>();
 
         // Dữ liệu cho header được lấy từ bảng tbTenQuan
-        tenquan = db.getTenQuan();
+        tenquan = db.getTenQuan(TenThanhPho);
 
         for(int i=0;i<tenquan.size();i++){
             // Dữ liệu tương ứng với mỗi header được lấy từ bảng tbTenDuong

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.kaios.foody.Adapter.Adapter_Tab2;
+import com.example.kaios.foody.Adapter.Adapter_odau_tab2;
 import com.example.kaios.foody.Fragment_angi_odau.fragment_odau;
 import com.example.kaios.foody.MainActivity;
 import com.example.kaios.foody.R;
@@ -25,16 +25,16 @@ public class TabActivity_2_odau extends Fragment {
             R.drawable.h22,R.drawable.h23,R.drawable.h24,R.drawable.h25,R.drawable.h26,R.drawable.h27,
             R.drawable.h28,R.drawable.h29,R.drawable.h30};
     public static String [] prgmNameList={"Sang trọng","Buffet","Nhà hàng","Ăn vặt/vỉa hè",
-            "Ăn chay","Café/Dessert","Quán ăn","Bả/Pub","Quán nhậu","Beer club","Tiệm bánh",
+            "Ăn chay","Café/Dessert","Quán ăn","Bar/Pub","Quán nhậu","Beer club","Tiệm bánh",
     "Tiệc tận nơi","Shop Online","Giao cơm văn phòng","Khu Ẩm Thực","Việt Nam","Châu Mỹ","Mỹ",
-    "Tây Âu","Ý","Pháp","Dức","Tây Ban Nha","Trung Hoa","Ấn Độ","Thái Lan","Nhật bản","Hàn Quốc","Malaysia","Quốc tế"};
+    "Tây Âu","Ý","Pháp","Đức","Tây Ban Nha","Trung Hoa","Ấn Độ","Thái Lan","Nhật bản","Hàn Quốc","Malaysia","Quốc tế"};
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.tabs_layout, container, false);
         lv=(ListView)v.findViewById(R.id.mainListView);
-        lv.setAdapter(new Adapter_Tab2(getContext(), prgmNameList,prgmImages));
+        lv.setAdapter(new Adapter_odau_tab2(getContext(), prgmNameList,prgmImages));
 
         //Click button Hủy trở về tab chính
         Button btn=(Button) v.findViewById(R.id.btnhuy);

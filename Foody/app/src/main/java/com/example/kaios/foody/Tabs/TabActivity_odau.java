@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kaios.foody.Adapter.Adapter_odau;
+import com.example.kaios.foody.Adapter.Adapter_odau_tab2;
 import com.example.kaios.foody.QuanAn;
 import com.example.kaios.foody.R;
 import com.example.kaios.foody.SQLite.DataBaseHandling;
@@ -51,21 +52,25 @@ public class TabActivity_odau extends Fragment {
             }
         });
         recyclerView.setLayoutManager(layoutManager);
-
-        loadData();
+        //load DB
+        loadData(Adapter_odau_tab2.nameDanhMuc);
         AdapterRecy = new Adapter_odau(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listQuanAn);
         recyclerView.setAdapter(AdapterRecy);
         AdapterRecy.notifyDataSetChanged();
+
+
 
         return v;
     }
 
     //load DB
-    public void loadData(){
+    public void loadData(String danhmuc){
         DataBaseHandling db = new DataBaseHandling(getContext());
         db.openDataBase();
-        listQuanAn=db.getQuanAn();
+        listQuanAn=db.getQuanAn(danhmuc);
 
     }
+
+
 
 }

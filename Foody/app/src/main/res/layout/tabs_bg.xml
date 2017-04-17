@@ -13,6 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@drawable/tab_text_selector"
+        android:ellipsize="end"
+        android:lines="1"
+        android:maxLines="1"
         android:drawableBottom="@drawable/arrow_down" />
 </LinearLayout>
 

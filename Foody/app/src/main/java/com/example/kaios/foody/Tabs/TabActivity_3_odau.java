@@ -1,5 +1,6 @@
 package com.example.kaios.foody.Tabs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,11 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 
+import com.example.kaios.foody.Adapter.Adapter_DoiTP;
 import com.example.kaios.foody.Adapter.ExpandableListViewAdapter;
-import com.example.kaios.foody.SQLite.DataBaseHandling;
+import com.example.kaios.foody.Doi_ThanhPho;
 import com.example.kaios.foody.Fragment_angi_odau.fragment_odau;
 import com.example.kaios.foody.MainActivity;
 import com.example.kaios.foody.R;
+import com.example.kaios.foody.SQLite.DataBaseHandling;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +39,7 @@ public class TabActivity_3_odau extends Fragment {
         // Tham chiếu ExpandableListView
         expan = (ExpandableListView)v.findViewById(R.id.expan);
         // Đọc dữ liệu từ SQLite
-        loadData();
+        loadData(Adapter_DoiTP.nameTP);
         elva = new ExpandableListViewAdapter(getContext(), tenquan, tenduong);
         // Chỉ định Adapter cho ExpandableListView
         expan.setAdapter(elva);
@@ -54,18 +57,27 @@ public class TabActivity_3_odau extends Fragment {
             }
         });
 
+        Button DoiTinhThanh=(Button)v.findViewById(R.id.tp);
+        DoiTinhThanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Doi_ThanhPho.class);
+                startActivity(intent);
+            }
+        });
+
         return v;
     }
 
 
     //load Data
-    private void loadData() {
+    private void loadData(String TenThanhPho) {
         DataBaseHandling db = new DataBaseHandling(getContext());
         db.openDataBase();
         tenduong = new HashMap<String, ArrayList<String>>();
 
         // Dữ liệu cho header được lấy từ bảng tbTenQuan
-        tenquan = db.getTenQuan();
+        tenquan = db.getTenQuan(TenThanhPho);
 
         for(int i=0;i<tenquan.size();i++){
             // Dữ liệu tương ứng với mỗi header được lấy từ bảng tbTenDuong

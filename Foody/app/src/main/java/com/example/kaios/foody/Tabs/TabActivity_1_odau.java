@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.kaios.foody.Adapter.Adapter_Tab1;
+import com.example.kaios.foody.Adapter.Adapter_Tab1_odau;
 import com.example.kaios.foody.Fragment_angi_odau.fragment_odau;
 import com.example.kaios.foody.MainActivity;
 import com.example.kaios.foody.R;
@@ -29,7 +29,7 @@ public class TabActivity_1_odau extends Fragment {
         View v = inflater.inflate(R.layout.tabs_layout, container, false);
         lv=(ListView)v.findViewById(R.id.mainListView);
 
-        lv.setAdapter(new Adapter_Tab1(getContext(), prgmNameList,prgmImages));
+        lv.setAdapter(new Adapter_Tab1_odau(getContext(), prgmNameList,prgmImages));
 
         //Click button Hủy trở về tab chính
         Button btn=(Button) v.findViewById(R.id.btnhuy);

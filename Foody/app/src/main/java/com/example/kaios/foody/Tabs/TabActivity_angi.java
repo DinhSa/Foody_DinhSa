@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kaios.foody.Adapter.Adapter_angi;
+import com.example.kaios.foody.Adapter.Adapter_angi_tab2;
 import com.example.kaios.foody.MonAn;
 import com.example.kaios.foody.R;
 import com.example.kaios.foody.SQLite.DataBaseHandling;
@@ -52,7 +53,7 @@ public class TabActivity_angi extends Fragment {
         });
         recyclerView.setLayoutManager(layoutManager);
 
-        loadData();
+        loadData(Adapter_angi_tab2.nameDanhMuc);
         AdapterRecy = new Adapter_angi(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listMonAn);
         recyclerView.setAdapter(AdapterRecy);
         AdapterRecy.notifyDataSetChanged();
@@ -60,10 +61,10 @@ public class TabActivity_angi extends Fragment {
         return v;
     }
 
-    public void loadData(){
+    public void loadData(String danhmucMonAn){
         DataBaseHandling db = new DataBaseHandling(getContext());
         db.openDataBase();
-        listMonAn=db.getMonAn();
+        listMonAn=db.getMonAn(danhmucMonAn);
 
     }
 
