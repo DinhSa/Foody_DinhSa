@@ -67,7 +67,10 @@ public class TabActivity_odau extends Fragment {
     public void loadData(String danhmuc){
         DataBaseHandling db = new DataBaseHandling(getContext());
         db.openDataBase();
-        listQuanAn=db.getQuanAn(danhmuc);
+        if(danhmuc!="Danh mục")
+            listQuanAn=db.getQuanAn(danhmuc);
+        else
+            listQuanAn=db.getQuanAnAll();
 
     }
 

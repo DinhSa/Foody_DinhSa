@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kaios.foody.Fragment_angi_odau.fragment_angi;
-import com.example.kaios.foody.Fragment_angi_odau.fragment_odau;
 import com.example.kaios.foody.MainActivity;
 import com.example.kaios.foody.R;
 
@@ -74,7 +73,7 @@ public class Adapter_Tab1_angi extends BaseAdapter {
                 txt.setText(nameDanhMuc);//đổi tên tab
                 txt.setTextColor(Color.RED); //đổi màu text
                 fragment_angi.mTabHost.setCurrentTab(0);//trở về lại tab 0
-                fragment_odau.click1=false; //click chưa đc click
+                fragment_angi.click1=false; //click chưa đc click
                 MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện lại BottomBar khi tắt listView
             }
         });

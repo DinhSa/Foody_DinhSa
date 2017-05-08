@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.example.kaios.foody.Doi_ThanhPho;
 import com.example.kaios.foody.MainActivity;
 import com.example.kaios.foody.R;
 import com.example.kaios.foody.Tabs.TabActivity_1_odau;
@@ -33,7 +34,7 @@ public class fragment_odau extends Fragment {
         setupTab(new TextView(getContext()), "Ở Đâu",TabActivity_odau.class);
         setupTab(new TextView(getContext()), "Mới Nhất", TabActivity_1_odau.class);
         setupTab(new TextView(getContext()), "Danh mục",TabActivity_2_odau.class);
-        setupTab(new TextView(getContext()), "TP.HCM",TabActivity_3_odau.class);
+        setupTab(new TextView(getContext()), Doi_ThanhPho.nameTP,TabActivity_3_odau.class);
         //ẩn tab đầu tiên
         mTabHost.getTabWidget().getChildAt(0).setVisibility(View.GONE);
 
@@ -119,5 +120,9 @@ public class fragment_odau extends Fragment {
         return view;
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        mTabHost.setCurrentTab(0);
+    }
 }

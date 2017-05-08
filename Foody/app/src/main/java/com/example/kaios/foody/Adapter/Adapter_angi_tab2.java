@@ -14,7 +14,10 @@ import com.example.kaios.foody.MainActivity;
 import com.example.kaios.foody.R;
 
 public class Adapter_angi_tab2 extends BaseAdapter {
-    public static String nameDanhMuc="Sang trọng";
+    private static final int TYPE_HEARDER = 0;
+    private static final int TYPE_DM = 1;
+    boolean IsPressFirstItem_DanhMuc=false;
+    public static String nameDanhMuc="Danh mục";
     String [] result;
     Context context;
     int [] imageId;
@@ -29,6 +32,18 @@ public class Adapter_angi_tab2 extends BaseAdapter {
         this.imageId=prgmImages;
         this.inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 2;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if(position==0)
+            return TYPE_HEARDER;
+        return TYPE_DM;
     }
     @Override
     public int getCount() {
@@ -48,37 +63,60 @@ public class Adapter_angi_tab2 extends BaseAdapter {
         return position;
     }
 
-    public class Holder
-    {
-        TextView tv;
-        ImageView img;
-    }
+//    public class Holder
+//    {
+//        TextView tv;
+//        ImageView img;
+//    }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-        final Adapter_angi_tab2.Holder holder=new Adapter_angi_tab2.Holder();
+        //Adapter_angi_tab2.Holder holder=new Adapter_angi_tab2.Holder();
         View rowView;
-        rowView = inflater.inflate(R.layout.adapter__tab2, null);
-        holder.tv=(TextView) rowView.findViewById(R.id.textView2);
-        holder.img=(ImageView) rowView.findViewById(R.id.imageView2);
-        holder.tv.setText(result[position]);
-        holder.img.setImageResource(imageId[position]);
+        int rowType = getItemViewType(position);
+        if(rowType==TYPE_HEARDER){
+            rowView = inflater.inflate(R.layout.danhmuc_header, null);
+            TextView tv=(TextView) rowView.findViewById(R.id.danhmuc);
+            tv.setText("Danh mục");
 
-        rowView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                nameDanhMuc=result[position];
-                TextView txt=(TextView) fragment_angi.mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.tabsText);
-                txt.setText(nameDanhMuc);//đổi tên tab
-                txt.setTextColor(Color.RED); //đổi màu text
-                fragment_angi.mTabHost.setCurrentTab(0);//trở về lại tab 0
-                fragment_angi.click2=false;//click chưa đc click
-                MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện lại BottomBar khi tắt listView
+            rowView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    nameDanhMuc="Danh mục"; //lấy tên danh mục
+                    TextView txt=(TextView)fragment_angi.mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.tabsText);
+                    txt.setText(nameDanhMuc);//đổi tên tab
+                    txt.setTextColor(Color.RED); //đổi màu text
+                    fragment_angi.mTabHost.setCurrentTab(0);//trở về lại tab 0
+                    fragment_angi.click2=false; //click chưa đc click
+                    MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện lại BottomBar khi tắt listView
 
-//                Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
-            }
-        });
+                }
+            });
+        }
+        else {
+            rowView = inflater.inflate(R.layout.adapter__tab2, null);
+            TextView tv=(TextView) rowView.findViewById(R.id.textView2);
+            ImageView img=(ImageView) rowView.findViewById(R.id.imageView2);
+            tv.setText(result[position-1]);
+            img.setImageResource(imageId[position-1]);
+            //
+            rowView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    nameDanhMuc=result[position-1]; //lấy tên danh mục
+                    TextView txt=(TextView) fragment_angi.mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.tabsText);
+                    txt.setText(nameDanhMuc);//đổi tên tab
+                    txt.setTextColor(Color.RED); //đổi màu text
+                    fragment_angi.mTabHost.setCurrentTab(0);//trở về lại tab 0
+                    fragment_angi.click2=false; //click chưa đc click
+                    MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện lại BottomBar khi tắt listView
+
+//              Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+        //
+
         return rowView;
     }
 

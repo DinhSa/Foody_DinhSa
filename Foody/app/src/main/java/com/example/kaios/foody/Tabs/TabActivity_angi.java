@@ -64,7 +64,10 @@ public class TabActivity_angi extends Fragment {
     public void loadData(String danhmucMonAn){
         DataBaseHandling db = new DataBaseHandling(getContext());
         db.openDataBase();
-        listMonAn=db.getMonAn(danhmucMonAn);
+        if(danhmucMonAn!="Danh mục")
+            listMonAn=db.getMonAn(danhmucMonAn);
+        else
+            listMonAn=db.getMonAnAll();
 
     }
 

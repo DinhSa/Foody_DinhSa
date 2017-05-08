@@ -1,5 +1,7 @@
 package com.example.kaios.foody.Tabs;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,9 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
-import com.example.kaios.foody.Adapter.Adapter_DoiTP;
 import com.example.kaios.foody.Adapter.ExpandableListViewAdapter;
+import com.example.kaios.foody.Doi_ThanhPho;
 import com.example.kaios.foody.Fragment_angi_odau.fragment_angi;
 import com.example.kaios.foody.MainActivity;
 import com.example.kaios.foody.R;
@@ -34,10 +37,13 @@ public class TabActivity_3_angi extends Fragment {
         View v = inflater.inflate(R.layout.tab3, container, false);
 
 
+        TextView txt=(TextView)v.findViewById(R.id.tvHeader);
+        txt.setText(Doi_ThanhPho.nameTP);
+        txt.setTextColor(Color.RED);
         // Tham chiếu ExpandableListView
         expan = (ExpandableListView)v.findViewById(R.id.expan);
         // Đọc dữ liệu từ SQLite
-        loadData(Adapter_DoiTP.nameTP);
+        loadData(Doi_ThanhPho.nameTP);
         elva = new ExpandableListViewAdapter(getContext(), tenquan, tenduong);
         // Chỉ định Adapter cho ExpandableListView
         expan.setAdapter(elva);
@@ -52,6 +58,16 @@ public class TabActivity_3_angi extends Fragment {
                 fragment_angi.mTabHost.setCurrentTab(0);
                 fragment_angi.click3=false;
                 MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện BottomBar khi bấm hủy
+            }
+        });
+
+        Button DoiTinhThanh=(Button)v.findViewById(R.id.tp);
+        DoiTinhThanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Doi_ThanhPho.class);
+                //fragment_odau.mTabHost.setCurrentTab(0);
+                startActivity(intent);
             }
         });
 

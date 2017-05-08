@@ -102,7 +102,7 @@ public class DataBaseHandling extends SQLiteOpenHelper {
 
 
 
-    // Getting All Department
+    // Get tên quận
     public ArrayList<String> getTenQuan(String TenThanhPho) {
         // Select All Query
         ArrayList<String> alDept = new ArrayList<>();
@@ -128,7 +128,7 @@ public class DataBaseHandling extends SQLiteOpenHelper {
         return alDept;
     }
 
-    // Getting All Department
+    // Get tên đường
     public ArrayList<String> getTenDuong(String tenquan) {
         // Select All Query
         ArrayList<String> alEmp = new ArrayList<>();
@@ -151,6 +151,34 @@ public class DataBaseHandling extends SQLiteOpenHelper {
         db.close();
         c.close();
         return alEmp;
+    }
+
+    //get all quán ăn
+    public ArrayList<QuanAn> getQuanAnAll(){
+        ArrayList<QuanAn> listQuanAn = new ArrayList<>();
+        listQuanAn.clear();
+        String sql= "SELECT TenQuanAn, DiaChi, TenDuong, DiemQuan, HinhAnh\n" +
+                "FROM DuongQuan, QuanAN WHERE DuongQuan.MaDuong=QuanAn.MaDuong";
+        //thực thi lệnh sql
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                String tenQuan = c.getString(0);
+                String diachiQuan = c.getString(1);
+                String tenThanhPho = c.getString(2);
+                String diemQuan = c.getString(3);
+                byte[] hinhQuan = c.getBlob(4);
+                Bitmap bmp_hinhQuan = BitmapFactory.decodeByteArray(hinhQuan, 0, hinhQuan.length);
+                listQuanAn.add(new QuanAn(diemQuan, tenQuan, diachiQuan, tenThanhPho, bmp_hinhQuan));
+            } while (c.moveToNext());
+        }
+
+        db.close();
+        c.close();
+        return listQuanAn;
     }
 
     //get quán ăn
@@ -183,6 +211,37 @@ public class DataBaseHandling extends SQLiteOpenHelper {
         return listQuanAn;
     }
 
+    //get all món ăn
+    public ArrayList<MonAn> getMonAnAll(){
+        ArrayList<MonAn> listMonAn = new ArrayList<>();
+        listMonAn.clear();
+        String sql= "SELECT TenMonAn, TenQuanAn, DiaChi, TenDuong, MonAn.HinhAnh\n" +
+                "FROM MonAn, QuanAn, DuongQuan\n" +
+                "WHERE  MonAn.MaQuanAn=QuanAn.MaQuanAn\n" +
+                "and DuongQuan.MaDuong=QuanAn.MaDuong";
+
+        //thực thi lệnh sql
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                String tenMonAn = c.getString(0);
+                String tenQuan = c.getString(1);
+                String diachi = c.getString(2);
+                String tenduong = c.getString(3);
+                byte[] hinhMonAn = c.getBlob(4);
+                Bitmap bmp_hinhMonAn = BitmapFactory.decodeByteArray(hinhMonAn, 0, hinhMonAn.length);
+
+                listMonAn.add(new MonAn(bmp_hinhMonAn, tenMonAn, tenQuan, diachi, tenduong));
+            } while (c.moveToNext());
+        }
+
+        db.close();
+        c.close();
+        return listMonAn;
+    }
     //get Món Ăn
     public ArrayList<MonAn> getMonAn(String danhmucMonAn){
         ArrayList<MonAn> listMonAn = new ArrayList<>();
