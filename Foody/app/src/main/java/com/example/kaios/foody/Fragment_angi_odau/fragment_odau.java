@@ -120,9 +120,4 @@ public class fragment_odau extends Fragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mTabHost.setCurrentTab(0);
-    }
 }

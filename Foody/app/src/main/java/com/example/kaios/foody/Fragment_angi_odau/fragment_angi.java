@@ -119,11 +119,6 @@ public class fragment_angi extends Fragment {
         tv.setText(text);
         return view;
     }
-    @Override
-    public void onResume() {
-        super.onResume();
-        mTabHost.setCurrentTab(0);
-    }
 
 }
 

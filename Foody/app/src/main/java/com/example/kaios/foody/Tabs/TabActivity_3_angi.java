@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import com.example.kaios.foody.Adapter.ExpandableListViewAdapter;
+import com.example.kaios.foody.Adapter.Adapter_Tab3_Angi;
 import com.example.kaios.foody.Doi_ThanhPho;
 import com.example.kaios.foody.Fragment_angi_odau.fragment_angi;
 import com.example.kaios.foody.MainActivity;
@@ -23,8 +23,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TabActivity_3_angi extends Fragment {
-
-    ExpandableListViewAdapter elva;
+    public static String KieuDiaDiem="ThanhPho";
+    public static String TenDiaDiem="TP.HCM";
+    Adapter_Tab3_Angi elva;
     ExpandableListView expan;
     ArrayList<String> tenquan;
     HashMap<String, ArrayList<String>> tenduong;
@@ -44,7 +45,7 @@ public class TabActivity_3_angi extends Fragment {
         expan = (ExpandableListView)v.findViewById(R.id.expan);
         // Đọc dữ liệu từ SQLite
         loadData(Doi_ThanhPho.nameTP);
-        elva = new ExpandableListViewAdapter(getContext(), tenquan, tenduong);
+        elva = new Adapter_Tab3_Angi(getContext(), tenquan, tenduong);
         // Chỉ định Adapter cho ExpandableListView
         expan.setAdapter(elva);
 

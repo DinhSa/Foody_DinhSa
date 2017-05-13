@@ -18,7 +18,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="7">
+                android:layout_weight="6">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -33,12 +33,12 @@
                 android:layout_height="0dp"
                 android:orientation="vertical"
                 android:paddingLeft="5dp"
-                android:layout_weight="3">
+                android:layout_weight="4">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:text="Tên Món"
                         android:textColor="@color/colorBlack"
                         android:gravity="center_vertical"
@@ -47,7 +47,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="2"
+                        android:layout_weight="3"
                         android:text="Tên Quán"
                         android:gravity="center_vertical"
                         android:textColor="@color/colorBlack"
@@ -58,7 +58,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1.2"
+                        android:layout_weight="3"
                         android:text="Dịa Chỉ Quán"
                         android:id="@+id/tvDiaChi" />
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.kaios.foody.QuanAn;
 import com.example.kaios.foody.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by kaios on 4/11/2017.
@@ -27,10 +27,10 @@ public class Adapter_odau extends RecyclerView.Adapter< RecyclerView.ViewHolder>
     private int imgHeader;
     private int[] imgdanhmuc;
     private String[] tvdanhmuc;
-    private List<QuanAn> listQuanAn;
+    private ArrayList<QuanAn> listQuanAn;
 
     public Adapter_odau(Context context, int imgHeader, int[] imgDanhMuc, String[] tvDanhMuc,
-                             List<QuanAn> listQuanAn) {
+                             ArrayList<QuanAn> listQuanAn) {
         this.context=context;
         this.imgHeader=imgHeader;
         this.imgdanhmuc=imgDanhMuc;
@@ -70,9 +70,9 @@ public class Adapter_odau extends RecyclerView.Adapter< RecyclerView.ViewHolder>
         } else {
             Adapter_odau.DataQuan mHolder = (Adapter_odau.DataQuan) holder;
             QuanAn item = listQuanAn.get(position - tvdanhmuc.length - 1);
-            mHolder.tvDiemQuan.setText(item.getTvDiem());
+            mHolder.tvDiemQuan.setText(String.valueOf(item.getTvDiem()));
             mHolder.tvTenQuan.setText(item.getTvTen());
-            mHolder.tvDiaDiem.setText(item.getTvDiaDiem() + ", " + item.getTvThanhPho());
+            mHolder.tvDiaDiem.setText(item.getTvDiaDiem()+ ",  " + item.getTvTenDuong()+ ",  " + item.getTvQuanHuyen() + ", " + item.getTvThanhPho());
             mHolder.imgODau.setImageBitmap(item.getImgHinh());
         }
     }
@@ -122,9 +122,9 @@ public class Adapter_odau extends RecyclerView.Adapter< RecyclerView.ViewHolder>
         private ImageView imgODau;
         public DataQuan(View itemView) {
             super(itemView);
-            tvDiaDiem = (TextView) itemView.findViewById(R.id.tvdiadiem);
             tvDiemQuan = (TextView) itemView.findViewById(R.id.tvdiem);
             tvTenQuan = (TextView) itemView.findViewById(R.id.tvtenquan);
+            tvDiaDiem = (TextView) itemView.findViewById(R.id.tvdiadiem);
             imgODau = (ImageView) itemView.findViewById(R.id.imgOdau);
         }
     }

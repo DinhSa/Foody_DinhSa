@@ -2,7 +2,7 @@ package com.example.kaios.foody;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,9 +10,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.kaios.foody.Adapter.Adapter_DoiTP;
-import com.example.kaios.foody.Fragment_angi_odau.fragment_angi;
-import com.example.kaios.foody.Fragment_angi_odau.fragment_odau;
+import com.example.kaios.foody.Adapter.Adapter_angi_tab2;
+import com.example.kaios.foody.Adapter.Adapter_odau_tab2;
 import com.example.kaios.foody.SQLite.DataBaseHandling;
+import com.example.kaios.foody.Tabs.TabActivity_3_angi;
+import com.example.kaios.foody.Tabs.TabActivity_3_odau;
 
 import java.util.ArrayList;
 
@@ -42,32 +44,34 @@ public class Doi_ThanhPho extends Activity {
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragment_odau.click3=false;
-                MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện BottomBar khi bấm hủy
                 finish();
             }
         });
 
 
+        //Sự kiện Click
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String text = listTinhThanh.get(position-1);
-                TextView txt=(TextView) fragment_odau.mTabHost.getTabWidget().getChildAt(3).findViewById(R.id.tabsText);
-                TextView txt1=(TextView) fragment_angi.mTabHost.getTabWidget().getChildAt(3).findViewById(R.id.tabsText);
-                txt.setText(text);//đổi tên tab
-                txt1.setText(text);//đổi tên tab
+//                TextView txt=(TextView) fragment_odau.mTabHost.getTabWidget().getChildAt(3).findViewById(R.id.tabsText);
+//                TextView txt1=(TextView) fragment_angi.mTabHost.getTabWidget().getChildAt(3).findViewById(R.id.tabsText);
                 nameTP=text;
-                txt.setTextColor(Color.RED);
-                txt1.setTextColor(Color.RED);
-                fragment_odau.click3=false;
-                fragment_angi.click3=false;
-                MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện BottomBar khi bấm hủy
+                TabActivity_3_odau.TenDiaDiem=text;
+                TabActivity_3_odau.KieuDiaDiem="ThanhPho";
+                TabActivity_3_angi.TenDiaDiem=text;
+                TabActivity_3_angi.KieuDiaDiem="ThanhPho";
+                //reset params
+                Adapter_angi_tab2.TenDanhMuc = "Danh mục";
+                Adapter_odau_tab2.TenDanhMuc= "Danh mục";
+                Intent intent = new Intent(Doi_ThanhPho.this, MainActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
     }
 
+    //load DB
     public void loadDB(){
         DataBaseHandling db = new DataBaseHandling(this);
         db.openDataBase();

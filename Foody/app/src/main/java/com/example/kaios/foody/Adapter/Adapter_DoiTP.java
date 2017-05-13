@@ -1,5 +1,6 @@
 package com.example.kaios.foody.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.kaios.foody.Doi_ThanhPho;
 import com.example.kaios.foody.R;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class Adapter_DoiTP extends BaseAdapter {
 
     public Adapter_DoiTP(){}
 
-    public Adapter_DoiTP(Doi_ThanhPho mainActivity, ArrayList<String> prgmNameList) {
+    public Adapter_DoiTP(Activity mainActivity, ArrayList<String> prgmNameList) {
         this.result=prgmNameList;
         this.context=mainActivity;
         this.inflater = ( LayoutInflater )context.
@@ -93,7 +93,7 @@ public class Adapter_DoiTP extends BaseAdapter {
 ////                    TextView txt=(TextView) fragment_odau.mTabHost.getTabWidget().getChildAt(3).findViewById(R.id.tabsText);
 ////                    txt.setText(nameTP);//đổi tên tab
 ////                    fragment_odau.mTabHost.setCurrentTab(0);
-////                    txt.setTextColor(Color.RED); //đổi màu text
+////                    txt.setTextColor(Color.RED); //đổing  màu text
 ////                    fragment_odau.mTabHost.setCurrentTab(0);//trở về lại tab 0
 ////                    fragment_odau.click3=false; //click chưa đc click
 ////                    MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện lại BottomBar khi tắt listView

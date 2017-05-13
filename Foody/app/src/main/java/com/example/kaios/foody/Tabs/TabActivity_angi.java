@@ -11,11 +11,20 @@ import android.view.ViewGroup;
 
 import com.example.kaios.foody.Adapter.Adapter_angi;
 import com.example.kaios.foody.Adapter.Adapter_angi_tab2;
+import com.example.kaios.foody.Clients.FoodyClient;
 import com.example.kaios.foody.MonAn;
 import com.example.kaios.foody.R;
-import com.example.kaios.foody.SQLite.DataBaseHandling;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.message.BasicHeader;
 
 public class TabActivity_angi extends Fragment {
 
@@ -53,21 +62,48 @@ public class TabActivity_angi extends Fragment {
         });
         recyclerView.setLayoutManager(layoutManager);
 
-        loadData(Adapter_angi_tab2.nameDanhMuc);
-        AdapterRecy = new Adapter_angi(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listMonAn);
-        recyclerView.setAdapter(AdapterRecy);
-        AdapterRecy.notifyDataSetChanged();
-
+        getAnGi();
+        //loadData(Adapter_angi_tab2.nameDanhMuc);
         return v;
     }
 
-    public void loadData(String danhmucMonAn){
-        DataBaseHandling db = new DataBaseHandling(getContext());
-        db.openDataBase();
-        if(danhmucMonAn!="Danh mục")
-            listMonAn=db.getMonAn(danhmucMonAn);
-        else
-            listMonAn=db.getMonAnAll();
+//    public void loadData(String danhmucMonAn){
+//        DataBaseHandling db = new DataBaseHandling(getContext());
+//        db.openDataBase();
+//        if(danhmucMonAn!="Danh mục")
+//            listMonAn=db.getMonAn(danhmucMonAn);
+//        else
+//            listMonAn=db.getMonAnAll();
+//
+//    }
+
+
+    //load webservice
+    public void getAnGi() {
+        List<Header> headers = new ArrayList<Header>();
+        headers.add(new BasicHeader("Accept", "application/json"));
+        RequestParams params = new RequestParams();
+        params.put("TenDanhMuc", Adapter_angi_tab2.TenDanhMuc);
+        params.put("KieuDiaDiem", TabActivity_3_angi.KieuDiaDiem);
+        params.put("TenDiaDiem", TabActivity_3_angi.TenDiaDiem);
+        FoodyClient Angi = new FoodyClient();
+        Angi.get(getContext(), "api/AnGi/GetAnGiOptions", headers.toArray(new Header[headers.size()]),
+                params, new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                        listMonAn = new ArrayList<MonAn>();
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                listMonAn.add(new MonAn(response.getJSONObject(i)));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        AdapterRecy = new Adapter_angi(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listMonAn);
+                        recyclerView.setAdapter(AdapterRecy);
+                        AdapterRecy.notifyDataSetChanged();
+                    }
+                });
 
     }
 

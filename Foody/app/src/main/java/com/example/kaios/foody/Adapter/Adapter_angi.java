@@ -70,10 +70,10 @@ public class Adapter_angi extends RecyclerView.Adapter< RecyclerView.ViewHolder>
         } else {
             Adapter_angi.DataQuan mHolder = (Adapter_angi.DataQuan) holder;
             MonAn item = listMonAn.get(position - tvdanhmuc.length - 1);
-            mHolder.imgAnGi.setImageBitmap(item.getImgHinhMonAn());
+            mHolder.imgAnGi.setImageBitmap(item.getImgHinh());
             mHolder.tvTenMon.setText(item.getTvTenMonAn());
             mHolder.tvTenQuan.setText(item.getTvTenQuanMonAn());
-            mHolder.tvDiaChi.setText(item.getTvDiaDiemQuanMonAn() + ", " + item.getTvTenDuong());
+            mHolder.tvDiaChi.setText(item.getTvDiaDiemQuanMonAn()+ ",  " + item.getTvTenDuong()+ ",  " + item.getTvQuanHuyen() + ", " + item.getTvThanhPho());
         }
     }
 

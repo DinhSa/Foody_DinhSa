@@ -17,7 +17,7 @@ public class Adapter_angi_tab2 extends BaseAdapter {
     private static final int TYPE_HEARDER = 0;
     private static final int TYPE_DM = 1;
     boolean IsPressFirstItem_DanhMuc=false;
-    public static String nameDanhMuc="Danh mục";
+    public static String TenDanhMuc="Danh mục";
     String [] result;
     Context context;
     int [] imageId;
@@ -82,9 +82,9 @@ public class Adapter_angi_tab2 extends BaseAdapter {
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    nameDanhMuc="Danh mục"; //lấy tên danh mục
+                    TenDanhMuc="Danh mục"; //lấy tên danh mục
                     TextView txt=(TextView)fragment_angi.mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.tabsText);
-                    txt.setText(nameDanhMuc);//đổi tên tab
+                    txt.setText(TenDanhMuc);//đổi tên tab
                     txt.setTextColor(Color.RED); //đổi màu text
                     fragment_angi.mTabHost.setCurrentTab(0);//trở về lại tab 0
                     fragment_angi.click2=false; //click chưa đc click
@@ -103,9 +103,9 @@ public class Adapter_angi_tab2 extends BaseAdapter {
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    nameDanhMuc=result[position-1]; //lấy tên danh mục
+                    TenDanhMuc=result[position-1]; //lấy tên danh mục
                     TextView txt=(TextView) fragment_angi.mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.tabsText);
-                    txt.setText(nameDanhMuc);//đổi tên tab
+                    txt.setText(TenDanhMuc);//đổi tên tab
                     txt.setTextColor(Color.RED); //đổi màu text
                     fragment_angi.mTabHost.setCurrentTab(0);//trở về lại tab 0
                     fragment_angi.click2=false; //click chưa đc click

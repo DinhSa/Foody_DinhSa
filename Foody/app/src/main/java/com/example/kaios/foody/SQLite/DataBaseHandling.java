@@ -5,11 +5,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import com.example.kaios.foody.MonAn;
-import com.example.kaios.foody.QuanAn;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,6 +12,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+
+//import com.example.kaios.foody.QuanAn;
 
 /**
  * Created by kaios on 4/10/2017.
@@ -154,127 +151,127 @@ public class DataBaseHandling extends SQLiteOpenHelper {
     }
 
     //get all quán ăn
-    public ArrayList<QuanAn> getQuanAnAll(){
-        ArrayList<QuanAn> listQuanAn = new ArrayList<>();
-        listQuanAn.clear();
-        String sql= "SELECT TenQuanAn, DiaChi, TenDuong, DiemQuan, HinhAnh\n" +
-                "FROM DuongQuan, QuanAN WHERE DuongQuan.MaDuong=QuanAn.MaDuong";
-        //thực thi lệnh sql
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(sql, null);
-
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                String tenQuan = c.getString(0);
-                String diachiQuan = c.getString(1);
-                String tenThanhPho = c.getString(2);
-                String diemQuan = c.getString(3);
-                byte[] hinhQuan = c.getBlob(4);
-                Bitmap bmp_hinhQuan = BitmapFactory.decodeByteArray(hinhQuan, 0, hinhQuan.length);
-                listQuanAn.add(new QuanAn(diemQuan, tenQuan, diachiQuan, tenThanhPho, bmp_hinhQuan));
-            } while (c.moveToNext());
-        }
-
-        db.close();
-        c.close();
-        return listQuanAn;
-    }
+//    public ArrayList<QuanAn> getQuanAnAll(){
+//        ArrayList<QuanAn> listQuanAn = new ArrayList<>();
+//        listQuanAn.clear();
+//        String sql= "SELECT TenQuanAn, DiaChi, TenDuong, DiemQuan, HinhAnh\n" +
+//                "FROM DuongQuan, QuanAN WHERE DuongQuan.MaDuong=QuanAn.MaDuong";
+//        //thực thi lệnh sql
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor c = db.rawQuery(sql, null);
+//
+//        // looping through all rows and adding to list
+//        if (c.moveToFirst()) {
+//            do {
+//                String tenQuan = c.getString(0);
+//                String diachiQuan = c.getString(1);
+//                String tenThanhPho = c.getString(2);
+//                String diemQuan = c.getString(3);
+//                byte[] hinhQuan = c.getBlob(4);
+//                Bitmap bmp_hinhQuan = BitmapFactory.decodeByteArray(hinhQuan, 0, hinhQuan.length);
+//                listQuanAn.add(new QuanAn(diemQuan, tenQuan, diachiQuan, tenThanhPho));
+//            } while (c.moveToNext());
+//        }
+//
+//        db.close();
+//        c.close();
+//        return listQuanAn;
+//    }
 
     //get quán ăn
-    public ArrayList<QuanAn> getQuanAn(String danhmuc){
-        ArrayList<QuanAn> listQuanAn = new ArrayList<>();
-        listQuanAn.clear();
-        String sql= "SELECT TenQuanAn, DiaChi, TenDuong, DiemQuan, HinhAnh\n" +
-                "FROM DuongQuan, QuanAN, DanhMuc WHERE DuongQuan.MaDuong=QuanAn.MaDuong\n" +
-                "AND DanhMuc.MaDanhMuc=QuanAn.MaDanhMuc\n"+
-                "AND DanhMuc.TenDanhMuc= '"+danhmuc+"'";
-        //thực thi lệnh sql
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(sql, null);
+//    public ArrayList<QuanAn> getQuanAn(String danhmuc){
+//        ArrayList<QuanAn> listQuanAn = new ArrayList<>();
+//        listQuanAn.clear();
+//        String sql= "SELECT TenQuanAn, DiaChi, TenDuong, DiemQuan, HinhAnh\n" +
+//                "FROM DuongQuan, QuanAN, DanhMuc WHERE DuongQuan.MaDuong=QuanAn.MaDuong\n" +
+//                "AND DanhMuc.MaDanhMuc=QuanAn.MaDanhMuc\n"+
+//                "AND DanhMuc.TenDanhMuc= '"+danhmuc+"'";
+//        //thực thi lệnh sql
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor c = db.rawQuery(sql, null);
+//
+//        // looping through all rows and adding to list
+//        if (c.moveToFirst()) {
+//            do {
+//                String tenQuan = c.getString(0);
+//                String diachiQuan = c.getString(1);
+//                String tenThanhPho = c.getString(2);
+//                String diemQuan = c.getString(3);
+//                byte[] hinhQuan = c.getBlob(4);
+//                Bitmap bmp_hinhQuan = BitmapFactory.decodeByteArray(hinhQuan, 0, hinhQuan.length);
+//                listQuanAn.add(new QuanAn(diemQuan, tenQuan, diachiQuan, tenThanhPho));
+//            } while (c.moveToNext());
+//        }
+//
+//        db.close();
+//        c.close();
+//        return listQuanAn;
+//    }
 
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                String tenQuan = c.getString(0);
-                String diachiQuan = c.getString(1);
-                String tenThanhPho = c.getString(2);
-                String diemQuan = c.getString(3);
-                byte[] hinhQuan = c.getBlob(4);
-                Bitmap bmp_hinhQuan = BitmapFactory.decodeByteArray(hinhQuan, 0, hinhQuan.length);
-                listQuanAn.add(new QuanAn(diemQuan, tenQuan, diachiQuan, tenThanhPho, bmp_hinhQuan));
-            } while (c.moveToNext());
-        }
-
-        db.close();
-        c.close();
-        return listQuanAn;
-    }
-
-    //get all món ăn
-    public ArrayList<MonAn> getMonAnAll(){
-        ArrayList<MonAn> listMonAn = new ArrayList<>();
-        listMonAn.clear();
-        String sql= "SELECT TenMonAn, TenQuanAn, DiaChi, TenDuong, MonAn.HinhAnh\n" +
-                "FROM MonAn, QuanAn, DuongQuan\n" +
-                "WHERE  MonAn.MaQuanAn=QuanAn.MaQuanAn\n" +
-                "and DuongQuan.MaDuong=QuanAn.MaDuong";
-
-        //thực thi lệnh sql
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(sql, null);
-
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                String tenMonAn = c.getString(0);
-                String tenQuan = c.getString(1);
-                String diachi = c.getString(2);
-                String tenduong = c.getString(3);
-                byte[] hinhMonAn = c.getBlob(4);
-                Bitmap bmp_hinhMonAn = BitmapFactory.decodeByteArray(hinhMonAn, 0, hinhMonAn.length);
-
-                listMonAn.add(new MonAn(bmp_hinhMonAn, tenMonAn, tenQuan, diachi, tenduong));
-            } while (c.moveToNext());
-        }
-
-        db.close();
-        c.close();
-        return listMonAn;
-    }
-    //get Món Ăn
-    public ArrayList<MonAn> getMonAn(String danhmucMonAn){
-        ArrayList<MonAn> listMonAn = new ArrayList<>();
-        listMonAn.clear();
-        String sql= "SELECT TenMonAn, TenQuanAn, DiaChi, TenDuong, MonAn.HinhAnh\n" +
-                "FROM MonAn, QuanAn, DuongQuan, DanhMuc\n" +
-                "WHERE  MonAn.MaQuanAn=QuanAn.MaQuanAn\n" +
-                "and DuongQuan.MaDuong=QuanAn.MaDuong\n" +
-                "and QuanAn.MaDanhMuc=DanhMuc.MaDanhMuc\n"+
-                "and DanhMuc.TenDanhMuc='"+danhmucMonAn+"'";
-
-        //thực thi lệnh sql
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(sql, null);
-
-        // looping through all rows and adding to list
-        if (c.moveToFirst()) {
-            do {
-                String tenMonAn = c.getString(0);
-                String tenQuan = c.getString(1);
-                String diachi = c.getString(2);
-                String tenduong = c.getString(3);
-                byte[] hinhMonAn = c.getBlob(4);
-                Bitmap bmp_hinhMonAn = BitmapFactory.decodeByteArray(hinhMonAn, 0, hinhMonAn.length);
-
-                listMonAn.add(new MonAn(bmp_hinhMonAn, tenMonAn, tenQuan, diachi, tenduong));
-            } while (c.moveToNext());
-        }
-
-        db.close();
-        c.close();
-        return listMonAn;
-    }
+//    //get all món ăn
+//    public ArrayList<MonAn> getMonAnAll(){
+//        ArrayList<MonAn> listMonAn = new ArrayList<>();
+//        listMonAn.clear();
+//        String sql= "SELECT TenMonAn, TenQuanAn, DiaChi, TenDuong, MonAn.HinhAnh\n" +
+//                "FROM MonAn, QuanAn, DuongQuan\n" +
+//                "WHERE  MonAn.MaQuanAn=QuanAn.MaQuanAn\n" +
+//                "and DuongQuan.MaDuong=QuanAn.MaDuong";
+//
+//        //thực thi lệnh sql
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor c = db.rawQuery(sql, null);
+//
+//        // looping through all rows and adding to list
+//        if (c.moveToFirst()) {
+//            do {
+//                String tenMonAn = c.getString(0);
+//                String tenQuan = c.getString(1);
+//                String diachi = c.getString(2);
+//                String tenduong = c.getString(3);
+//                byte[] hinhMonAn = c.getBlob(4);
+//                Bitmap bmp_hinhMonAn = BitmapFactory.decodeByteArray(hinhMonAn, 0, hinhMonAn.length);
+//
+//                listMonAn.add(new MonAn(bmp_hinhMonAn, tenMonAn, tenQuan, diachi, tenduong));
+//            } while (c.moveToNext());
+//        }
+//
+//        db.close();
+//        c.close();
+//        return listMonAn;
+//    }
+//    //get Món Ăn
+//    public ArrayList<MonAn> getMonAn(String danhmucMonAn){
+//        ArrayList<MonAn> listMonAn = new ArrayList<>();
+//        listMonAn.clear();
+//        String sql= "SELECT TenMonAn, TenQuanAn, DiaChi, TenDuong, MonAn.HinhAnh\n" +
+//                "FROM MonAn, QuanAn, DuongQuan, DanhMuc\n" +
+//                "WHERE  MonAn.MaQuanAn=QuanAn.MaQuanAn\n" +
+//                "and DuongQuan.MaDuong=QuanAn.MaDuong\n" +
+//                "and QuanAn.MaDanhMuc=DanhMuc.MaDanhMuc\n"+
+//                "and DanhMuc.TenDanhMuc='"+danhmucMonAn+"'";
+//
+//        //thực thi lệnh sql
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor c = db.rawQuery(sql, null);
+//
+//        // looping through all rows and adding to list
+//        if (c.moveToFirst()) {
+//            do {
+//                String tenMonAn = c.getString(0);
+//                String tenQuan = c.getString(1);
+//                String diachi = c.getString(2);
+//                String tenduong = c.getString(3);
+//                byte[] hinhMonAn = c.getBlob(4);
+//                Bitmap bmp_hinhMonAn = BitmapFactory.decodeByteArray(hinhMonAn, 0, hinhMonAn.length);
+//
+//                listMonAn.add(new MonAn(bmp_hinhMonAn, tenMonAn, tenQuan, diachi, tenduong));
+//            } while (c.moveToNext());
+//        }
+//
+//        db.close();
+//        c.close();
+//        return listMonAn;
+//    }
 
     //get Thành Phố
     public ArrayList<String> getTinhThanh() {

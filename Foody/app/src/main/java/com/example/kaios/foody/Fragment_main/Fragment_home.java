@@ -15,7 +15,12 @@ import android.widget.TextView;
 
 import com.example.kaios.foody.Fragment_angi_odau.fragment_angi;
 import com.example.kaios.foody.Fragment_angi_odau.fragment_odau;
+import com.example.kaios.foody.MainActivity;
 import com.example.kaios.foody.R;
+
+import static com.example.kaios.foody.Fragment_angi_odau.fragment_angi.click1;
+import static com.example.kaios.foody.Fragment_angi_odau.fragment_angi.click2;
+import static com.example.kaios.foody.Fragment_angi_odau.fragment_angi.click3;
 
 public class Fragment_home extends Fragment {
 
@@ -45,9 +50,17 @@ public class Fragment_home extends Fragment {
                 switch (position) {
                     case 0:
                         changeSwipe(tvODau, tvAnGi,true);
+                        fragment_angi.mTabHost.setCurrentTab(0);
+                        click1 = false;
+                        click2=false;
+                        click3=false;
                         break;
                     case 1:
                         changeSwipe(tvAnGi, tvODau,false);
+                        fragment_odau.mTabHost.setCurrentTab(0);
+                        fragment_odau.click1 = false;
+                        fragment_odau.click2=false;
+                        fragment_odau.click3=false;
                         break;
                 }
             }
@@ -56,6 +69,7 @@ public class Fragment_home extends Fragment {
 
             }
         });
+
         tvODau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,9 +81,27 @@ public class Fragment_home extends Fragment {
             @Override
             public void onClick(View v) {
                 mViewPager.setCurrentItem(1);
+
             }
         });
 
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                MainActivity.mBottomBar.setVisibility(View.VISIBLE);
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         //sự kiện click Plus
         ImageView btnPlus=(ImageView)v.findViewById(R.id.imgPlus);
@@ -87,14 +119,6 @@ public class Fragment_home extends Fragment {
         return v;
     }
 
-
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if(context instanceof MainActivity){
-//            context1=(MainActivity) context;
-//        }
-//    }
 
     private void changeSwipe(TextView tvTurnOn, TextView tvTurnOff, boolean onLeft)
     {
