@@ -10,9 +10,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.kaios.foody.Adapter.Adapter_DoiTP;
-import com.example.kaios.foody.Adapter.Adapter_angi_tab2;
-import com.example.kaios.foody.Adapter.Adapter_odau_tab2;
 import com.example.kaios.foody.SQLite.DataBaseHandling;
+import com.example.kaios.foody.Tabs.TabActivity_2_angi;
+import com.example.kaios.foody.Tabs.TabActivity_2_odau;
 import com.example.kaios.foody.Tabs.TabActivity_3_angi;
 import com.example.kaios.foody.Tabs.TabActivity_3_odau;
 
@@ -62,8 +62,8 @@ public class Doi_ThanhPho extends Activity {
                 TabActivity_3_angi.TenDiaDiem=text;
                 TabActivity_3_angi.KieuDiaDiem="ThanhPho";
                 //reset params
-                Adapter_angi_tab2.TenDanhMuc = "Danh mục";
-                Adapter_odau_tab2.TenDanhMuc= "Danh mục";
+                TabActivity_2_angi.TenDanhMuc = "Danh mục";
+                TabActivity_2_odau.TenDanhMuc= "Danh mục";
                 Intent intent = new Intent(Doi_ThanhPho.this, MainActivity.class);
                 startActivity(intent);
                 finish();

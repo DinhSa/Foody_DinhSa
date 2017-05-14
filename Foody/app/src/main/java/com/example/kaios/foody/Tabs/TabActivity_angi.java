@@ -1,5 +1,6 @@
 package com.example.kaios.foody.Tabs;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,9 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.kaios.foody.Adapter.Adapter_angi;
-import com.example.kaios.foody.Adapter.Adapter_angi_tab2;
 import com.example.kaios.foody.Clients.FoodyClient;
 import com.example.kaios.foody.MonAn;
 import com.example.kaios.foody.R;
@@ -83,12 +84,22 @@ public class TabActivity_angi extends Fragment {
         List<Header> headers = new ArrayList<Header>();
         headers.add(new BasicHeader("Accept", "application/json"));
         RequestParams params = new RequestParams();
-        params.put("TenDanhMuc", Adapter_angi_tab2.TenDanhMuc);
+        params.put("TenDanhMuc", TabActivity_2_angi.TenDanhMuc);
         params.put("KieuDiaDiem", TabActivity_3_angi.KieuDiaDiem);
         params.put("TenDiaDiem", TabActivity_3_angi.TenDiaDiem);
         FoodyClient Angi = new FoodyClient();
         Angi.get(getContext(), "api/AnGi/GetAnGiOptions", headers.toArray(new Header[headers.size()]),
                 params, new JsonHttpResponseHandler() {
+
+                    ProgressDialog progressDialog;
+
+                    @Override
+                    public void onStart() {
+                        progressDialog = new ProgressDialog(getContext(), R.style.DialogTheme);
+                        progressDialog.setCancelable(false);
+                        progressDialog.show();
+                    }
+
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                         listMonAn = new ArrayList<MonAn>();
@@ -102,6 +113,16 @@ public class TabActivity_angi extends Fragment {
                         AdapterRecy = new Adapter_angi(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listMonAn);
                         recyclerView.setAdapter(AdapterRecy);
                         AdapterRecy.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        Toast.makeText(getContext(), "Failure", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        progressDialog.dismiss();
                     }
                 });
 

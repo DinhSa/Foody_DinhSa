@@ -49,6 +49,7 @@ public class QuanAn {
     public int getID(){
         return this.ID;
     }
+
     public double getTvDiem() {
         return this.tvDiem;
     }
@@ -64,6 +65,7 @@ public class QuanAn {
     public String getTvTenDuong(){
         return this.tvTenDuong;
     }
+
     public String getTvQuanHuyen() {
         return this.tvQuanHuyen;
     }
@@ -92,6 +94,7 @@ public class QuanAn {
     public void setTvTenDuong(String tvTenDuong){
         this.tvTenDuong=tvTenDuong;
     }
+
     public void setTvQuanHuyen(String tvQuanHuyen){
         this.tvQuanHuyen=tvQuanHuyen;
     }

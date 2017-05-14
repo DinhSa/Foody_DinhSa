@@ -73,6 +73,7 @@ public class MonAn {
     public String getTvThanhPho(){
         return this.tvThanhPho;
     }
+
     public Bitmap getImgHinh() {
         return imgHinh;
     }

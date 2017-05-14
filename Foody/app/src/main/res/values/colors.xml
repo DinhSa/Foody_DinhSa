@@ -11,4 +11,5 @@
     <color name="white">#ffffff</color>
     <color name="white_trans">#99FFFFFF</color>
     <color name="xanh">#2abf01</color>
+    <color name="transparent">#00000000</color>
 </resources>
