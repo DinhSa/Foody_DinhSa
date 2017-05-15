@@ -67,7 +67,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/ic_plus"
+                app:srcCompat="@drawable/ic_add"
                 android:id="@+id/imgPlus"
                 android:padding="10dp"
                 android:layout_alignParentRight="true" />

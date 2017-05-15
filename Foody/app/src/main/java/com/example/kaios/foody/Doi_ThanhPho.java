@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.kaios.foody.Adapter.Adapter_DoiTP;
+import com.example.kaios.foody.Fragment_angi_odau.fragment_angi;
+import com.example.kaios.foody.Fragment_angi_odau.fragment_odau;
 import com.example.kaios.foody.SQLite.DataBaseHandling;
 import com.example.kaios.foody.Tabs.TabActivity_2_angi;
 import com.example.kaios.foody.Tabs.TabActivity_2_odau;
@@ -64,6 +66,8 @@ public class Doi_ThanhPho extends Activity {
                 //reset params
                 TabActivity_2_angi.TenDanhMuc = "Danh mục";
                 TabActivity_2_odau.TenDanhMuc= "Danh mục";
+                fragment_odau.click3=false;
+                fragment_angi.click3=false;
                 Intent intent = new Intent(Doi_ThanhPho.this, MainActivity.class);
                 startActivity(intent);
                 finish();

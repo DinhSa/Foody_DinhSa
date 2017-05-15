@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.kaios.foody.Adapter.Adapter_odau;
 import com.example.kaios.foody.Clients.FoodyClient;
@@ -34,10 +33,10 @@ public class TabActivity_odau extends Fragment {
     private int imgHeader = R.drawable.qc;
     private ArrayList<QuanAn> listQuanAn;
 
-    private int[] imgdanhmuc = {R.drawable.gantoi, R.drawable.cou, R.drawable.datcho,
-            R.drawable.datgiaohang, R.drawable.ecard, R.drawable.game,
-            R.drawable.binhluan, R.drawable.blog, R.drawable.topthanhvien,
-            R.drawable.video};
+    private int[] imgdanhmuc = {R.drawable.tc01, R.drawable.tc02, R.drawable.tc03,
+            R.drawable.tc04, R.drawable.tc05, R.drawable.tc06,
+            R.drawable.tc07, R.drawable.tc08, R.drawable.tc09,
+            R.drawable.tc10};
     private String[] tvdanhmuc = {"Gần tôi", "Coupon", "Đặt chỗ ưu đãi", "Đặt giao hàng", "E-card",
             "Game & Fun", "Bình Luận", "Blogs", "Top thành viên", "Video"};
 
@@ -121,7 +120,8 @@ public class TabActivity_odau extends Fragment {
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                        Toast.makeText(getContext(), "Failure", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), "Failure", Toast.LENGTH_SHORT).show();
+                        progressDialog = ProgressDialog.show(getContext(),"Lỗi","kiểm tra kết nối", true);
                     }
 
                     @Override

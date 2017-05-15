@@ -22,8 +22,8 @@ public class TabActivity_1_angi extends Fragment {
     public static String nameDanhMuc="Mới Nhất";
     ListView lv;
 
-    public static int [] prgmImages={R.drawable.ic_1,R.drawable.ic_2,R.drawable.ic_xemnhieu,
-            R.drawable.ic_4};
+    public static int [] prgmImages={R.drawable.ic_moinhat,R.drawable.ic_gantoi,R.drawable.ic_moinhat,
+            R.drawable.ic_dukhach};
     public static String [] prgmNameList={"Mới nhất","Gần tôi","Xem nhiều","Du khách",};
     @Override
     public View onCreateView(LayoutInflater inflater,

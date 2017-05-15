@@ -22,8 +22,8 @@ public class TabActivity_1_odau extends Fragment {
     public static String nameDanhMuc="Mới Nhất";
     ListView lv;
 
-    public static int [] prgmImages={R.drawable.ic_1,R.drawable.ic_2,R.drawable.ic_3,
-            R.drawable.ic_4,R.drawable.ic_5,R.drawable.ic_6,R.drawable.ic_7,R.drawable.ic8};
+    public static int [] prgmImages={R.drawable.ic_moinhat,R.drawable.ic_gantoi,R.drawable.ic_phobien,
+            R.drawable.ic_dukhach,R.drawable.ic_ecard,R.drawable.ic_datcho,R.drawable.ic_uudaithe,R.drawable.ic_datgiaohang};
     public static String [] prgmNameList={"Mới nhất","Gần tôi","Phổ biến","Du khách",
             "Ưu đãi E-card","Đặt chỗ","Ưu đãi thẻ","Đặt giao hàng"};
     @Override

@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="90"
-            android:src="@drawable/quetma" />
+            android:src="@drawable/dg01" />
 
         <TextView
             android:paddingLeft="5dp"
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="90"
-            android:src="@drawable/danganh"/>
+            android:src="@drawable/dg02"/>
 
         <TextView
             android:paddingLeft="5dp"
@@ -82,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="90"
-            android:src="@drawable/checkin" />
+            android:src="@drawable/dg03" />
 
         <TextView
             android:paddingLeft="5dp"
@@ -111,7 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="90"
-            android:src="@drawable/vietbl" />
+            android:src="@drawable/dg04" />
 
         <TextView
             android:paddingLeft="5dp"
@@ -140,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="90"
-            android:src="@drawable/themdd" />
+            android:src="@drawable/dg05" />
 
         <TextView
             android:paddingLeft="5dp"

@@ -12,4 +12,6 @@
     <color name="white_trans">#99FFFFFF</color>
     <color name="xanh">#2abf01</color>
     <color name="transparent">#00000000</color>
+    <color name="mauTrong35">#59ffffff</color>
+    <color name="mauLamNhat">#19bde6</color>
 </resources>

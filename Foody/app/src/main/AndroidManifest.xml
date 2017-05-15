@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kaios.foody">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -17,8 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".Doi_ThanhPho"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Doi_ThanhPho" />
         <activity android:name=".TabActivity_1" />
         <activity android:name=".TabActivity_2" />
         <activity android:name=".Tabs.TabActivity_3" />
@@ -54,8 +54,7 @@
         <activity android:name=".Fragment_Search.Fragment_Search_tab" />
         <activity android:name=".Fragment_ThongBao.Fragment_ThongBao_Tab" />
         <activity android:name=".Fragment_User.Fragment_user_tab" />
-
-
+        <activity android:name=".Login_main"></activity>
     </application>
 
 </manifest>
