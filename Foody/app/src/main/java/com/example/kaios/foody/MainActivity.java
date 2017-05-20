@@ -16,6 +16,7 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 public class MainActivity extends AppCompatActivity {
    public static BottomBar mBottomBar;
+    public static boolean islogin=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
                 transaction.replace(R.id.frame_layout_main,selectedFragment);
                 transaction.commit();
             }
+
+
         });
+
 //        //Manually displaying the first fragment - one time only
 //        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 //        transaction.replace(R.id.frame_layout_main, NV_Taikhoan.newInstance());

@@ -68,9 +68,7 @@ public class Doi_ThanhPho extends Activity {
                 TabActivity_2_odau.TenDanhMuc= "Danh mục";
                 fragment_odau.click3=false;
                 fragment_angi.click3=false;
-                Intent intent = new Intent(Doi_ThanhPho.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                ToMain();
             }
         });
     }
@@ -81,6 +79,13 @@ public class Doi_ThanhPho extends Activity {
         db.openDataBase();
         listTinhThanh=db.getTinhThanh();
 
+    }
+
+    public void ToMain(){
+        Intent loginIntent = new Intent(getApplicationContext(),MainActivity.class);
+        // Clears History of Activity
+        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(loginIntent);
     }
 
 }

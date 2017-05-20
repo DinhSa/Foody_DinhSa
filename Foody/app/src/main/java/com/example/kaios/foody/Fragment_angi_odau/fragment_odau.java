@@ -33,7 +33,7 @@ public class fragment_odau extends Fragment {
         //add tab
         setupTab(new TextView(getContext()), "Ở Đâu",TabActivity_odau.class);
         setupTab(new TextView(getContext()), "Mới Nhất", TabActivity_1_odau.class);
-        setupTab(new TextView(getContext()), "Danh mục",TabActivity_2_odau.class);
+        setupTab(new TextView(getContext()), TabActivity_2_odau.TenDanhMuc,TabActivity_2_odau.class);
         setupTab(new TextView(getContext()), Doi_ThanhPho.nameTP,TabActivity_3_odau.class);
         //ẩn tab đầu tiên
         mTabHost.getTabWidget().getChildAt(0).setVisibility(View.GONE);

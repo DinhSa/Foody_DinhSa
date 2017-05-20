@@ -18,10 +18,27 @@ public class FoodyClient {
 
     public static void get(Context context, String url, Header[] headers, RequestParams params,
                            AsyncHttpResponseHandler responseHandler) {
-        client.setTimeout(30*1000);
-        client.setConnectTimeout(30*1000);
-        client.setResponseTimeout(30*1000);
+        client.setTimeout(60*1000);
+        client.setConnectTimeout(60*1000);
+        client.setResponseTimeout(60*1000);
+        client.setMaxConnections(60);
         client.get(context, getAbsoluteUrl(url), headers, params, responseHandler);
+    }
+    public static void register(String url, RequestParams params,
+                                AsyncHttpResponseHandler responseHandler) {
+        client.setTimeout(60*1000);
+        client.setConnectTimeout(60*1000);
+        client.setResponseTimeout(60*1000);
+        client.setMaxConnections(60);
+        client.get(getAbsoluteUrl(url),params,responseHandler);
+    }
+    public static void ChangePass(String url, RequestParams params,
+                                AsyncHttpResponseHandler responseHandler) {
+        client.setTimeout(60*1000);
+        client.setConnectTimeout(60*1000);
+        client.setResponseTimeout(60*1000);
+        client.setMaxConnections(60);
+        client.get(getAbsoluteUrl(url),params,responseHandler);
     }
 
     private static String getAbsoluteUrl(String relativeUrl) {

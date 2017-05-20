@@ -31,7 +31,7 @@ public class Welcome extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
             try {
-                Thread.sleep(4000);//wait 3s
+                Thread.sleep(4000);//wait 4s
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

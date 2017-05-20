@@ -35,7 +35,7 @@ public class fragment_angi extends Fragment {
         //add tab
         setupTab(new TextView(getContext()), "Ăn Gì",TabActivity_angi.class);
         setupTab(new TextView(getContext()), "Mới nhất", TabActivity_1_angi.class);
-        setupTab(new TextView(getContext()), "Danh mục",TabActivity_2_angi.class);
+        setupTab(new TextView(getContext()), TabActivity_2_angi.TenDanhMuc,TabActivity_2_angi.class);
         setupTab(new TextView(getContext()), Doi_ThanhPho.nameTP,TabActivity_3_angi.class);
         //ẩn tab đầu tiên
         mTabHost.getTabWidget().getChildAt(0).setVisibility(View.GONE);

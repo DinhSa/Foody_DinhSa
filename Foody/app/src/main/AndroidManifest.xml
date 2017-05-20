@@ -17,6 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Fragment_User.Register" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Doi_ThanhPho" />
         <activity android:name=".TabActivity_1" />
@@ -54,7 +55,10 @@
         <activity android:name=".Fragment_Search.Fragment_Search_tab" />
         <activity android:name=".Fragment_ThongBao.Fragment_ThongBao_Tab" />
         <activity android:name=".Fragment_User.Fragment_user_tab" />
-        <activity android:name=".Login_main"></activity>
+        <activity android:name=".Fragment_User.Login_main" />
+        <activity android:name=".Fragment_User.Login_Request" />
+        <activity android:name=".CaiDatTK_Main" />
+        <activity android:name=".DoiPassWord"></activity>
     </application>
 
 </manifest>
