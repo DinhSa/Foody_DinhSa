@@ -7,6 +7,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.HttpEntity;
 
 /**
  * Created by kaios on 5/12/2017.
@@ -39,6 +40,14 @@ public class FoodyClient {
         client.setResponseTimeout(60*1000);
         client.setMaxConnections(60);
         client.get(getAbsoluteUrl(url),params,responseHandler);
+    }
+    public static void changeimage(Context context, String url, HttpEntity entity, String contenType,
+                                   AsyncHttpResponseHandler responseHandler) {
+        client.setTimeout(60 * 1000);
+        client.setConnectTimeout(60 * 1000);
+        client.setResponseTimeout(60 * 1000);
+        client.setMaxConnections(60);
+        client.post(context, getAbsoluteUrl(url), entity, contenType, responseHandler);
     }
 
     private static String getAbsoluteUrl(String relativeUrl) {

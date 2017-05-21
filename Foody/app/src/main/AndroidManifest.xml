@@ -57,8 +57,9 @@
         <activity android:name=".Fragment_User.Fragment_user_tab" />
         <activity android:name=".Fragment_User.Login_main" />
         <activity android:name=".Fragment_User.Login_Request" />
-        <activity android:name=".CaiDatTK_Main" />
-        <activity android:name=".DoiPassWord"></activity>
+        <activity android:name=".Fragment_User.CaiDatTK_Main" />
+        <activity android:name=".Fragment_User.DoiPassWord" />
+        <activity android:name=".Fragment_User.DoiHinhDaiDien"></activity>
     </application>
 
 </manifest>

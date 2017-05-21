@@ -1,4 +1,4 @@
-package com.example.kaios.foody;
+package com.example.kaios.foody.Fragment_User;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -11,9 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kaios.foody.Clients.FoodyClient;
-import com.example.kaios.foody.Fragment_User.Utility;
+import com.example.kaios.foody.R;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import java.io.UnsupportedEncodingException;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -70,13 +72,23 @@ public class DoiPassWord extends AppCompatActivity {
                     // Put Http parameter username with value of Pass Edit View control
                     params.put("Email", Email);
                     params.put("NewPass", NewPass);
+                    params.put("OldPass", old);
                     // Invoke RESTful Web Service with Http parameters
                     FoodyClient client = new FoodyClient();
                     client.ChangePass("api/User/ChangePass", params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                             prgDialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "PassWord đã được đổi!", Toast.LENGTH_LONG).show();
+                            try {
+                                Boolean changed = Boolean.valueOf(new String(responseBody,"UTF-8"));
+                                if (changed)//trả về true
+                                    Toast.makeText(getApplicationContext(), "PassWord đã được đổi!", Toast.LENGTH_LONG).show();
+                                else
+                                    Toast.makeText(getApplicationContext(), "Pass cũ không đúng!", Toast.LENGTH_LONG).show();
+                            } catch (UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                            }
+
                         }
 
                         @Override

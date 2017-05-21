@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.kaios.foody.Clients.FoodyClient;
-import com.example.kaios.foody.DoiPassWord;
 import com.example.kaios.foody.Fragment_main.Fragment_User;
 import com.example.kaios.foody.MainActivity;
 import com.example.kaios.foody.R;
@@ -84,10 +83,11 @@ public class Login_Request extends AppCompatActivity {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     super.onSuccess(statusCode, headers, response);
-                    MainActivity.islogin=true;
+                    MainActivity.islogin=true; //đánh dấu đã đăng nhập
                     TaiKhoan taikhoan =new TaiKhoan(response);
-                    Fragment_User.NameUser= taikhoan.getName();
-                    DoiPassWord.Email=taikhoan.getEmail();
+                    Fragment_User.HinhBitmap=taikhoan.getHinhDaiDien();//get anh dại diện
+                    Fragment_User.NameUser= taikhoan.getName();//get Tên hiển thị
+                    DoiPassWord.Email=taikhoan.getEmail();//get Email
                     // hide Progress Dialog
                     prgDialog.dismiss();
                     ToMain();
@@ -96,7 +96,7 @@ public class Login_Request extends AppCompatActivity {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                     super.onFailure(statusCode, headers, responseString, throwable);
-                    Toast.makeText(getApplicationContext(), "Đăng Nhập Thất Bại", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Tài khoản hoặc mật khẩu không đúng!", Toast.LENGTH_LONG).show();
                     prgDialog.dismiss();
                 }
             });

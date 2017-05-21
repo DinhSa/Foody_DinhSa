@@ -17,6 +17,8 @@ import com.example.kaios.foody.R;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import java.io.UnsupportedEncodingException;
+
 import cz.msebera.android.httpclient.Header;
 
 /**
@@ -109,17 +111,29 @@ public class Register extends Activity {
                         client.register("api/User/Register", params, new AsyncHttpResponseHandler() {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                MainActivity.islogin=true;
-                                Fragment_User.NameUser= Name;
-                                Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
-                                ToMain();
+                                try {
+                                    Boolean registed = Boolean.valueOf(new String(responseBody,"UTF-8"));
+                                    if(registed){//đăng ký thành công
+                                        MainActivity.islogin=true;
+                                        Fragment_User.NameUser= Name;
+                                        Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
+                                        ToMain();
+                                    }
+                                    else
+                                        Toast.makeText(getApplicationContext(), "Đăng ký thất bại", Toast.LENGTH_LONG).show();
+
+                                } catch (UnsupportedEncodingException e) {
+                                    e.printStackTrace();
+                                }
+
                                 // hide Progress Dialog
                                 prgDialog.dismiss();
                             }
 
                             @Override
                             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                                Toast.makeText(getApplicationContext(), "lỗi!", Toast.LENGTH_LONG).show();
+                                prgDialog.dismiss();
                             }
                         });
                     }
