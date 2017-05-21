@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbFoody" Class="DBFoodyDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DINHSA;Initial Catalog=dbFoody;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dbFoodyConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DanhMuc" Member="DanhMucs">
+    <Type Name="DanhMuc">
+      <Column Name="MaDanhMuc" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenDanhMuc" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="HinhDanhMuc" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="KieuDanhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DanhMuc_QuanAn" Member="QuanAns" ThisKey="MaDanhMuc" OtherKey="MaDanhMuc" Type="QuanAn" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ThanhPho" Member="ThanhPhos">
+    <Type Name="ThanhPho">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenThanhPho" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="ThanhPho_QuanHuyen" Member="QuanHuyens" ThisKey="id" OtherKey="MaTP" Type="QuanHuyen" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DuongPho" Member="DuongPhos">
+    <Type Name="DuongPho">
+      <Column Name="MaDuong" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenDuong" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="MaQuan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DuongPho_QuanAn" Member="QuanAns" ThisKey="MaDuong" OtherKey="MaDuong" Type="QuanAn" />
+      <Association Name="QuanHuyen_DuongPho" Member="QuanHuyen" ThisKey="MaQuan" OtherKey="id" Type="QuanHuyen" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MonAn" Member="MonAns">
+    <Type Name="MonAn">
+      <Column Name="MaMonAn" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenMonAn" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="HinhAnh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Gia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaQuanAn" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="QuanAn_MonAn" Member="QuanAn" ThisKey="MaQuanAn" OtherKey="id" Type="QuanAn" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QuanAn" Member="QuanAns">
+    <Type Name="QuanAn">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenQuan" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="HinhAnh" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SDT" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="MaDuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaDanhMuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Diem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Lat" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Long" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="GioBatDau" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="GioKetThuc" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="GiaThapNhat" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="GiaCaoNhat" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MoTa" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ThoiGianThem" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="QuanAn_MonAn" Member="MonAns" ThisKey="id" OtherKey="MaQuanAn" Type="MonAn" />
+      <Association Name="DanhMuc_QuanAn" Member="DanhMuc" ThisKey="MaDanhMuc" OtherKey="MaDanhMuc" Type="DanhMuc" IsForeignKey="true" />
+      <Association Name="DuongPho_QuanAn" Member="DuongPho" ThisKey="MaDuong" OtherKey="MaDuong" Type="DuongPho" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QuanHuyen" Member="QuanHuyens">
+    <Type Name="QuanHuyen">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenQuanHuyen" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="MaTP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="QuanHuyen_DuongPho" Member="DuongPhos" ThisKey="id" OtherKey="MaQuan" Type="DuongPho" />
+      <Association Name="ThanhPho_QuanHuyen" Member="ThanhPho" ThisKey="MaTP" OtherKey="id" Type="ThanhPho" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TaiKhoan" Member="TaiKhoans">
+    <Type Name="TaiKhoan">
+      <Column Name="TaiKhoan" Member="TaiKhoan1" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenHienThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HinhDaiDien" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+</Database>
