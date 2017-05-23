@@ -48,6 +48,7 @@
 
 
         <EditText
+            android:background="@android:color/transparent"
             android:id="@+id/etxtTaiKhoanMailDangKy"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -68,7 +69,7 @@
             android:ems="10"
             android:paddingLeft="10dp"
             android:hint="Mật khẩu"
-            android:inputType="textPersonName"
+            android:inputType="textWebPassword"
             android:textColorHint="@color/colorWhite"
             android:textAppearance="@style/CustomTextLarge"
             android:textColor="@color/colorWhite" />
@@ -81,7 +82,7 @@
             android:ems="10"
             android:paddingLeft="10dp"
             android:hint="Nhập lại mật khẩu"
-            android:inputType="textPersonName"
+            android:inputType="textWebPassword"
             android:textColorHint="@color/colorWhite"
             android:textAppearance="@style/CustomTextLarge"
             android:textColor="@color/colorWhite" />

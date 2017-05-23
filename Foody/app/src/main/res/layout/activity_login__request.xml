@@ -71,7 +71,7 @@
             android:ems="10"
             android:paddingLeft="10dp"
             android:hint="Mật khẩu"
-            android:inputType="textPersonName"
+            android:inputType="textWebPassword"
             android:textColorHint="@color/colorWhite"
             android:textAppearance="@style/CustomTextLarge"
             android:textColor="@color/colorWhite" />

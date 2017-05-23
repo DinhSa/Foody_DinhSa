@@ -2,81 +2,81 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14, 8.5" name="DBFoody">
   <DataContextMoniker Name="/DBFoodyDataContext" />
   <nestedChildShapes>
-    <classShape Id="872d60c3-2f69-47ae-a41d-69e8ace56744" absoluteBounds="6.25, 6.125, 2, 1.5785953776041666">
+    <classShape Id="902efbb7-b617-4f94-9a70-93337aa2a38c" absoluteBounds="6.25, 6.125, 2, 1.5785953776041666">
       <DataClassMoniker Name="/DBFoodyDataContext/DanhMuc" />
       <nestedChildShapes>
-        <elementListCompartment Id="f2fe3dc3-f2e2-4ced-a092-cdc84a109ae1" absoluteBounds="6.265, 6.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e8e60bdb-2b2b-409f-b787-b584ad255a99" absoluteBounds="6.265, 6.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="664ce98d-f8b0-42fa-9d57-72276d511b89" absoluteBounds="0.75, 2.375, 2, 1.1939925130208335">
+    <classShape Id="45c29f37-1863-430a-8aa5-1f9fc8e4585d" absoluteBounds="0.75, 2.375, 2, 1.1939925130208335">
       <DataClassMoniker Name="/DBFoodyDataContext/ThanhPho" />
       <nestedChildShapes>
-        <elementListCompartment Id="c86ec7af-2ff3-496b-a4ed-ec7213824b9d" absoluteBounds="0.765, 2.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="2f531217-8840-472d-ba77-a487107b55b3" absoluteBounds="0.765, 2.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="77a607be-bc2b-49d6-be8b-3da8a712ba88" absoluteBounds="6.25, 2.25, 2, 1.3862939453125005">
+    <classShape Id="191f54f5-8e51-41c6-999d-277b7c410863" absoluteBounds="6.25, 2.25, 2, 1.3862939453125005">
       <DataClassMoniker Name="/DBFoodyDataContext/DuongPho" />
       <nestedChildShapes>
-        <elementListCompartment Id="917d7798-e164-4fd7-bcc3-812abd016d65" absoluteBounds="6.265, 2.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="34a272ca-d20d-4bb6-b929-68cef2e513a9" absoluteBounds="6.265, 2.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="7328b464-6756-4092-b3c1-8ec22b4d1484" absoluteBounds="11.75, 2.125, 2, 1.7708968098958327">
+    <classShape Id="71cdc5a2-6158-4ef6-b175-b3255b7d57e2" absoluteBounds="11.75, 2.125, 2, 1.7708968098958327">
       <DataClassMoniker Name="/DBFoodyDataContext/MonAn" />
       <nestedChildShapes>
-        <elementListCompartment Id="fe159dc8-44cd-49bc-911b-97b00e9e9801" absoluteBounds="11.765, 2.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="355c0036-5944-4652-b19a-21a541127335" absoluteBounds="11.765, 2.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="92bea349-2a9b-48bf-836c-5df7ecf923ce" absoluteBounds="9, 1, 2, 3.8862125651041666">
+    <classShape Id="56efa34d-39ef-4d8f-bce9-7bbd1aa09958" absoluteBounds="9, 1, 2, 3.8862125651041666">
       <DataClassMoniker Name="/DBFoodyDataContext/QuanAn" />
       <nestedChildShapes>
-        <elementListCompartment Id="3831f884-ab52-4386-9d8d-712f12465672" absoluteBounds="9.015, 1.46, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="eedb8c18-5f5b-40e5-8fd2-45247adb9783" absoluteBounds="9.015, 1.46, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="5f9ce4b5-0600-4c0b-adba-2b8b4fb56844" absoluteBounds="3.5, 2.25, 2, 1.3862939453125005">
+    <classShape Id="2cfea2e2-eead-42c4-ae18-5cbcd38be090" absoluteBounds="3.5, 2.25, 2, 1.3862939453125005">
       <DataClassMoniker Name="/DBFoodyDataContext/QuanHuyen" />
       <nestedChildShapes>
-        <elementListCompartment Id="50a2f299-b429-464e-9483-54b4a32d9a55" absoluteBounds="3.515, 2.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="44ef2183-30b8-489d-a729-fc15a49b68ac" absoluteBounds="3.515, 2.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a9fef9aa-892e-45c8-b270-9cd41e482d04" absoluteBounds="0.75, 4.75, 2, 1.5785953776041666">
+    <classShape Id="01b60a34-7f05-49ef-b820-4926d4598749" absoluteBounds="0.75, 4.75, 2, 1.5785953776041666">
       <DataClassMoniker Name="/DBFoodyDataContext/TaiKhoan" />
       <nestedChildShapes>
-        <elementListCompartment Id="eb52c309-7a5c-4c5d-b5b9-a341692cc5dc" absoluteBounds="0.765, 5.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8997cbe1-3d42-4ea8-97ad-c6ca5c0754c2" absoluteBounds="0.765, 5.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(11 : 3.01044840494792); (11.75 : 3.01044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBFoodyDataContext/QuanAn/QuanAn_MonAn" />
       <nodes>
-        <classShapeMoniker Id="92bea349-2a9b-48bf-836c-5df7ecf923ce" />
-        <classShapeMoniker Id="7328b464-6756-4092-b3c1-8ec22b4d1484" />
+        <classShapeMoniker Id="56efa34d-39ef-4d8f-bce9-7bbd1aa09958" />
+        <classShapeMoniker Id="71cdc5a2-6158-4ef6-b175-b3255b7d57e2" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(8.25 : 6.91429768880208); (10 : 6.91429768880208); (10 : 4.88621256510417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBFoodyDataContext/DanhMuc/DanhMuc_QuanAn" />
       <nodes>
-        <classShapeMoniker Id="872d60c3-2f69-47ae-a41d-69e8ace56744" />
-        <classShapeMoniker Id="92bea349-2a9b-48bf-836c-5df7ecf923ce" />
+        <classShapeMoniker Id="902efbb7-b617-4f94-9a70-93337aa2a38c" />
+        <classShapeMoniker Id="56efa34d-39ef-4d8f-bce9-7bbd1aa09958" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(8.25 : 2.94314697265625); (9 : 2.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBFoodyDataContext/DuongPho/DuongPho_QuanAn" />
       <nodes>
-        <classShapeMoniker Id="77a607be-bc2b-49d6-be8b-3da8a712ba88" />
-        <classShapeMoniker Id="92bea349-2a9b-48bf-836c-5df7ecf923ce" />
+        <classShapeMoniker Id="191f54f5-8e51-41c6-999d-277b7c410863" />
+        <classShapeMoniker Id="56efa34d-39ef-4d8f-bce9-7bbd1aa09958" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 2.94314697265625); (6.25 : 2.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBFoodyDataContext/QuanHuyen/QuanHuyen_DuongPho" />
       <nodes>
-        <classShapeMoniker Id="5f9ce4b5-0600-4c0b-adba-2b8b4fb56844" />
-        <classShapeMoniker Id="77a607be-bc2b-49d6-be8b-3da8a712ba88" />
+        <classShapeMoniker Id="2cfea2e2-eead-42c4-ae18-5cbcd38be090" />
+        <classShapeMoniker Id="191f54f5-8e51-41c6-999d-277b7c410863" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 2.97199625651042); (3.5 : 2.97199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DBFoodyDataContext/ThanhPho/ThanhPho_QuanHuyen" />
       <nodes>
-        <classShapeMoniker Id="664ce98d-f8b0-42fa-9d57-72276d511b89" />
-        <classShapeMoniker Id="5f9ce4b5-0600-4c0b-adba-2b8b4fb56844" />
+        <classShapeMoniker Id="45c29f37-1863-430a-8aa5-1f9fc8e4585d" />
+        <classShapeMoniker Id="2cfea2e2-eead-42c4-ae18-5cbcd38be090" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

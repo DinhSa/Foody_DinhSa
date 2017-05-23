@@ -42,6 +42,7 @@ namespace FoodyServer.Controllers
                      TenQuanHuyen = quanhuyen.TenQuanHuyen,
                      TenThanhPho = thanhpho.TenThanhPho
                  });
+           
             return result.ToList();
         }
         [HttpGet]
@@ -171,6 +172,7 @@ namespace FoodyServer.Controllers
             var result = (
                  from a in ListTheoDanhMuc
                  join b in ListTheoDiaDiem on a.id equals b.id
+                 orderby b.id descending
                  select new QuanAnCustom
                  {
                      id = a.id,

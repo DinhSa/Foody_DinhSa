@@ -38,7 +38,7 @@ public class DoiHinhDaiDien extends AppCompatActivity {
     private static int REQUEST_LOAD_IMAGE = 1;
     private static int REQUEST_CAMERA = 2;
     ImageView imgHinhDaiDien;
-    private static Boolean Change = false;
+    private Boolean Change = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +87,9 @@ public class DoiHinhDaiDien extends AppCompatActivity {
                 prgDialog.setMessage("Please wait...");
                 // Set Cancelable as False
                 prgDialog.setCancelable(false);
-                String img = getByteArrayFromImageView(imgHinhDaiDien);
+
                 if(Change){
+                    String img = getByteArrayFromImageView(imgHinhDaiDien);
                     ChangeImg(DoiPassWord.Email,img);
                 }
                 else {
@@ -97,6 +98,63 @@ public class DoiHinhDaiDien extends AppCompatActivity {
 
             }
         });
+    }
+
+
+
+    //change image
+    public void ChangeImg(String Email, final String img){
+        prgDialog.show();
+        StringEntity entity = null;
+        try {
+            JSONObject object = new JSONObject();
+            object.put("TaiKhoan", Email);
+            object.put("HinhDaiDien", img);
+            entity = new StringEntity(object.toString());
+        } catch (JSONException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        FoodyClient Doihinh = new FoodyClient();
+        Doihinh.changeimage(getApplicationContext(), "api/User/DoiHinhDaiDien", entity, "application/json", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                try {
+                    Boolean Changed = Boolean.valueOf(new String(responseBody,"UTF-8"));
+                    if(Changed){
+                        byte[] byteArray =  Base64.decode(img, Base64.DEFAULT) ;
+                        Fragment_User.HinhBitmap=BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                        Fragment_User.Hinh.setImageBitmap(BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length));//cập nhật ImageView
+                        Change=false;
+                        Toast.makeText(getApplicationContext(), "Cập nhật thành công", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Cập nhật thất bại", Toast.LENGTH_LONG).show();
+                    }
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                prgDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Toast.makeText(getApplicationContext(), "Kết Nối Thất Bại", Toast.LENGTH_LONG).show();
+                prgDialog.dismiss();
+            }
+        });
+    }
+    //load ảnh từ device
+    public void loadImagefromGallery() {
+        // Create intent to Open Image applications like Gallery, Google Photos
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        // Start the Intent
+        startActivityForResult(galleryIntent, REQUEST_LOAD_IMAGE);
+    }
+    //load ảnh từ camera
+    private void loadImagefromCamera() {
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, REQUEST_CAMERA);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -135,61 +193,6 @@ public class DoiHinhDaiDien extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, "Thất bại", Toast.LENGTH_LONG).show();
         }
-    }
-
-
-    //change image
-    public void ChangeImg(String Email, final String img){
-        prgDialog.show();
-        StringEntity entity = null;
-        try {
-            JSONObject object = new JSONObject();
-            object.put("TaiKhoan", Email);
-            object.put("HinhDaiDien", img);
-            entity = new StringEntity(object.toString());
-        } catch (JSONException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        FoodyClient Doihinh = new FoodyClient();
-        Doihinh.changeimage(getApplicationContext(), "api/User/DoiHinhDaiDien", entity, "application/json", new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                try {
-                    Boolean Changed = Boolean.valueOf(new String(responseBody,"UTF-8"));
-                    if(Changed){
-                        byte[] byteArray =  Base64.decode(img, Base64.DEFAULT) ;
-                        Fragment_User.HinhBitmap=BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);//cập nhật ImageView
-                        Change=false;
-                        Toast.makeText(getApplicationContext(), "Cập nhật thành công", Toast.LENGTH_LONG).show();
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Cập nhật thất bại", Toast.LENGTH_LONG).show();
-                    }
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-                prgDialog.dismiss();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getApplicationContext(), "Kết Nối Thất Bại", Toast.LENGTH_LONG).show();
-                prgDialog.dismiss();
-            }
-        });
-    }
-    //load ảnh từ device
-    public void loadImagefromGallery() {
-        // Create intent to Open Image applications like Gallery, Google Photos
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        // Start the Intent
-        startActivityForResult(galleryIntent, REQUEST_LOAD_IMAGE);
-    }
-    //load ảnh từ camera
-    private void loadImagefromCamera() {
-        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(cameraIntent, REQUEST_CAMERA);
     }
     //menu chọn ảnh
     public void MenuImage(View v) {

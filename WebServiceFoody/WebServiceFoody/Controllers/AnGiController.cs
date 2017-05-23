@@ -179,6 +179,7 @@ namespace FoodyServer.Controllers
             var result = (
                  from a in ListTheoDanhMuc
                  join b in ListTheoDiaDiem on a.id equals b.id
+                 orderby b.id descending
                  select new MonAnCustom
                  {
                      id = a.id,

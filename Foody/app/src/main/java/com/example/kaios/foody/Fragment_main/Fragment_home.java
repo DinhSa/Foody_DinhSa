@@ -1,5 +1,6 @@
 package com.example.kaios.foody.Fragment_main;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
@@ -11,12 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.kaios.foody.Fragment_User.Login_main;
 import com.example.kaios.foody.Fragment_angi_odau.fragment_angi;
 import com.example.kaios.foody.Fragment_angi_odau.fragment_odau;
 import com.example.kaios.foody.MainActivity;
 import com.example.kaios.foody.R;
+import com.example.kaios.foody.ThemDiaDiem.ThemDiaDiem;
 
 import static com.example.kaios.foody.Fragment_angi_odau.fragment_angi.click1;
 import static com.example.kaios.foody.Fragment_angi_odau.fragment_angi.click2;
@@ -24,10 +28,10 @@ import static com.example.kaios.foody.Fragment_angi_odau.fragment_angi.click3;
 
 public class Fragment_home extends Fragment {
 
-
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
     TextView tvODau, tvAnGi;
+    ImageView btnPlus;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -104,24 +108,43 @@ public class Fragment_home extends Fragment {
         });
 
         //sự kiện click Plus
-        ImageView btnPlus=(ImageView)v.findViewById(R.id.imgPlus);
+        btnPlus=(ImageView)v.findViewById(R.id.imgPlus);
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
-                View bottomSheetView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_plus,null);
-                bottomSheetDialog.setContentView(bottomSheetView);
-                bottomSheetDialog.show();
+                ButtomSheetDialog();
             }
         });
-
 
         return v;
     }
 
+    //show BottomDialog
+    private void ButtomSheetDialog(){
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+        View bottomSheetView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_plus,null);
+        bottomSheetDialog.setContentView(bottomSheetView);
+        bottomSheetDialog.show();
+        final LinearLayout ln_ThemDiaDiem=(LinearLayout)bottomSheetView.findViewById(R.id.ln_ThemDiaDiem);
+        ln_ThemDiaDiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(MainActivity.islogin){//đã đăng nhập
+                    Intent intent = new Intent(getActivity(), ThemDiaDiem.class);
+                    startActivity(intent);//start thêm địa điểm
+                    bottomSheetDialog.dismiss();
+                }
+                else {//chưa dăng nhập
+                    Intent intent = new Intent(getActivity(), Login_main.class);
+                    startActivity(intent);//đi đến trang đăng nhập
+                    bottomSheetDialog.dismiss();
+                }
+            }
+        });
+        //bottomSheetDialog.show();
+    }
 
-    private void changeSwipe(TextView tvTurnOn, TextView tvTurnOff, boolean onLeft)
-    {
+    private void changeSwipe(TextView tvTurnOn, TextView tvTurnOff, boolean onLeft) {
         tvTurnOn.setBackgroundResource(android.R.color.transparent);
         tvTurnOn.setTextColor(Color.parseColor("#000000"));
         if (onLeft) {
@@ -133,10 +156,7 @@ public class Fragment_home extends Fragment {
         tvTurnOff.setTextColor(Color.parseColor("#FFFFFF"));
     }
 
-
-
-    public class SectionsPagerAdapter extends FragmentStatePagerAdapter
-    {
+    public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -159,7 +179,5 @@ public class Fragment_home extends Fragment {
             return 2;
         }
     }
-
-
 
 }

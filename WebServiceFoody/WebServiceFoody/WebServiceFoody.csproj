@@ -138,6 +138,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AnGiController.cs" />
     <Compile Include="Controllers\ODauController.cs" />
+    <Compile Include="Controllers\ThemDiaDiemController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DBFoody.designer.cs">
       <AutoGen>True</AutoGen>

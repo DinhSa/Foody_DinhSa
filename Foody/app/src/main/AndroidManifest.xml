@@ -3,6 +3,9 @@
     package="com.example.kaios.foody">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
 
     <application
         android:allowBackup="true"
@@ -17,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ThemDiaDiem.ChonDuong" />
         <activity android:name=".Fragment_User.Register" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Doi_ThanhPho" />
@@ -59,7 +63,11 @@
         <activity android:name=".Fragment_User.Login_Request" />
         <activity android:name=".Fragment_User.CaiDatTK_Main" />
         <activity android:name=".Fragment_User.DoiPassWord" />
-        <activity android:name=".Fragment_User.DoiHinhDaiDien"></activity>
+        <activity android:name=".Fragment_User.DoiHinhDaiDien" />
+        <activity android:name=".ThemDiaDiem.ThemDiaDiem" />
+        <activity android:name=".ThemDiaDiem.ChonThanhPho" />
+        <activity android:name=".ThemDiaDiem.ChonQuanTP" />
+        <activity android:name=".ThemDiaDiem.LoaiHinhDiaDiem"></activity>
     </application>
 
 </manifest>

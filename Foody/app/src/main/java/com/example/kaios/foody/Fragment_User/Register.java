@@ -116,6 +116,7 @@ public class Register extends Activity {
                                     if(registed){//đăng ký thành công
                                         MainActivity.islogin=true;
                                         Fragment_User.NameUser= Name;
+                                        Fragment_User.HinhBitmap=null;//chưa có hình đại diện
                                         Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
                                         ToMain();
                                     }

@@ -20,6 +20,7 @@ import com.example.kaios.foody.R;
 public class Fragment_User extends Fragment {
     public static String NameUser;//tên hiển thị
     public static Bitmap HinhBitmap;//hình DB
+    public static ImageView Hinh;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class Fragment_User extends Fragment {
         ImageView btnlogin= (ImageView) v.findViewById(R.id.btn_login_user);
         LinearLayout longout=(LinearLayout) v.findViewById(R.id.tv_DangXuat);
         TextView EditUser=(TextView)v.findViewById(R.id.tv_3_1) ;
-        ImageView Hinh=(ImageView)v.findViewById(R.id.iv_login_1);
+        Hinh=(ImageView)v.findViewById(R.id.iv_login_1);
         //hiển thị tên User nếu đã đăng nhập
         if(MainActivity.islogin && HinhBitmap!=null){
             tvlogin.setText(NameUser);//hiển thị tên user

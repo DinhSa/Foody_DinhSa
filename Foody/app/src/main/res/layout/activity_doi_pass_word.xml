@@ -108,6 +108,7 @@
                     android:textColor="#363636"
                     android:textSize="13sp"
                     android:padding="12dp"
+                    android:inputType="textWebPassword"
                     android:background="@drawable/border_edittext_resetpass"
                     android:textStyle="normal|bold" />
 
@@ -146,6 +147,7 @@
                     android:textColor="#363636"
                     android:textSize="13sp"
                     android:padding="12dp"
+                    android:inputType="textWebPassword"
                     android:background="@drawable/border_edittext_resetpass"
                     android:textStyle="normal|bold" />
 
@@ -183,6 +185,7 @@
                     android:textColor="#363636"
                     android:textSize="13sp"
                     android:padding="12dp"
+                    android:inputType="textWebPassword"
                     android:background="@drawable/border_edittext_resetpass"
                     android:textStyle="normal|bold" />
 

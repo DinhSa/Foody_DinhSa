@@ -149,6 +149,22 @@ public class DataBaseHandling extends SQLiteOpenHelper {
         c.close();
         return alEmp;
     }
+    //get ID ten đường
+    public int GetID(String TenDuong){
+        int id = 1;
+        String sql="SELECT MaDuong FROM DuongQuan WHERE TenDuong ='"+TenDuong+"'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+        if (c.moveToFirst()) {
+            do {
+                // Adding employee to list
+                id= c.getInt(0);
+            } while (c.moveToNext());
+        }
+        db.close();
+        c.close();
+        return id;
+    }
 
     //get all quán ăn
 //    public ArrayList<QuanAn> getQuanAnAll(){

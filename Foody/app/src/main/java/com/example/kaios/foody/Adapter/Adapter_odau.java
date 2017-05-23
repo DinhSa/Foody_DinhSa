@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import com.example.kaios.foody.QuanAn;
 import com.example.kaios.foody.R;
@@ -61,7 +62,7 @@ public class Adapter_odau extends RecyclerView.Adapter< RecyclerView.ViewHolder>
 
         if (holder instanceof Adapter_odau.HeaderItem) {
             Adapter_odau.HeaderItem mHolder = (Adapter_odau.HeaderItem)holder;
-            mHolder.img_quangcao.setImageResource(imgHeader);
+            //mHolder.img_quangcao.setImageResource(imgHeader);
         } else
         if (holder instanceof Adapter_odau.DanhMucItem){
             Adapter_odau.DanhMucItem mHolder = (Adapter_odau.DanhMucItem) holder;
@@ -96,11 +97,15 @@ public class Adapter_odau extends RecyclerView.Adapter< RecyclerView.ViewHolder>
 
     public class HeaderItem extends RecyclerView.ViewHolder {
 
-        private ImageView img_quangcao;
+        //private ImageView img_quangcao;
+        private ViewFlipper viewFlipper;
         public HeaderItem(View itemView) {
             super(itemView);
 
-            img_quangcao = (ImageView) itemView.findViewById(R.id.imgHeader);
+            viewFlipper = (ViewFlipper) itemView.findViewById(R.id.viewFlipper);
+
+            viewFlipper.setFlipInterval(4000);
+            viewFlipper.startFlipping();
         }
     }
 

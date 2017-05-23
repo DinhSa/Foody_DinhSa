@@ -32,7 +32,7 @@ public class TabActivity_angi extends Fragment {
     private RecyclerView recyclerView;
     private Adapter_angi AdapterRecy;
     private int imgHeader = R.drawable.qc;
-    private ArrayList<MonAn> listMonAn;
+    private ArrayList<MonAn> listMonAn=new ArrayList<MonAn>();
 
     private int[] imgdanhmuc = {R.drawable.tc01, R.drawable.tc02, R.drawable.tc03,
             R.drawable.tc04, R.drawable.tc05, R.drawable.tc06,
@@ -62,12 +62,21 @@ public class TabActivity_angi extends Fragment {
         });
         recyclerView.setLayoutManager(layoutManager);
 
-        getAnGi();
+
         //loadData(Adapter_angi_tab2.nameDanhMuc);
+        AdapterRecy = new Adapter_angi(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listMonAn);
+        recyclerView.setAdapter(AdapterRecy);
+        AdapterRecy.notifyDataSetChanged();
         return v;
     }
 
-//    public void loadData(String danhmucMonAn){
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getAnGi();
+    }
+
+    //    public void loadData(String danhmucMonAn){
 //        DataBaseHandling db = new DataBaseHandling(getContext());
 //        db.openDataBase();
 //        if(danhmucMonAn!="Danh mục")

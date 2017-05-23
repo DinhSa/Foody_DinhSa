@@ -31,7 +31,7 @@ public class TabActivity_odau extends Fragment {
     private RecyclerView recyclerView;
     private Adapter_odau AdapterRecy;
     private int imgHeader = R.drawable.qc;
-    private ArrayList<QuanAn> listQuanAn;
+    private ArrayList<QuanAn> listQuanAn=new ArrayList<QuanAn>();
 
     private int[] imgdanhmuc = {R.drawable.tc01, R.drawable.tc02, R.drawable.tc03,
             R.drawable.tc04, R.drawable.tc05, R.drawable.tc06,
@@ -60,14 +60,19 @@ public class TabActivity_odau extends Fragment {
             }
         });
         recyclerView.setLayoutManager(layoutManager);
-        getODau();
-        //loadData(Adapter_odau_tab2.nameDanhMuc);
-//        AdapterRecy = new Adapter_odau(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listQuanAn);
-//        recyclerView.setAdapter(AdapterRecy);
-//        AdapterRecy.notifyDataSetChanged();
 
+        //loadData(Adapter_odau_tab2.nameDanhMuc);
+        AdapterRecy = new Adapter_odau(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listQuanAn);
+        recyclerView.setAdapter(AdapterRecy);
+        AdapterRecy.notifyDataSetChanged();
 
         return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getODau();
     }
 
     //load DB
