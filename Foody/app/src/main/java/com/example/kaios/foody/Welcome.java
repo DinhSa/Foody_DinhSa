@@ -3,16 +3,10 @@ package com.example.kaios.foody;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ProgressBar;
 
 public class Welcome extends AppCompatActivity {
 
-    private static final int PROGRESS = 0x1;
-    private ProgressBar mProgress;
-    private int mProgressStatus = 0;
-    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +52,7 @@ public class Welcome extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             Intent i = new Intent(Welcome.this, MainActivity.class);
-            startActivity(i);
+            startActivity(i);//show trang chính
             finish();
         }
 
