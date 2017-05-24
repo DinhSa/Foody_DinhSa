@@ -30,8 +30,8 @@ public class MonAn {
     public MonAn(JSONObject object) {
         try {
             this.ID=object.getInt("id");
-            this.tvTenMonAn = object.getString("TenMonAn");//lấy tên món ăn
-            this.tvTenQuanMonAn = object.getString("TenQuan");//
+            this.tvTenMonAn = object.getString("TenMonAn");
+            this.tvTenQuanMonAn = object.getString("TenQuan");
             this.tvDiaDiemQuanMonAn = object.getString("DiaChi");
             this.tvTenDuong = object.getString("TenDuong");
             this.tvQuanHuyen = object.getString("TenQuanHuyen");
