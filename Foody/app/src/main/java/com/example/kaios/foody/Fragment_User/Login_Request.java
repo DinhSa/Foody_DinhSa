@@ -76,8 +76,8 @@ public class Login_Request extends AppCompatActivity {
         if(Utility.isNotNull(Email) && Utility.isNotNull(Pass)){
             RequestParams params = new RequestParams();
             prgDialog.show();
-            params.put("email", Email);
-            params.put("pass", Pass);
+            params.put("email", Email);//truyền param cho service
+            params.put("pass", Pass);//truyền param cho service
             FoodyClient client = new FoodyClient();
             client.register("api/User/Login", params, new JsonHttpResponseHandler(){
                 @Override
@@ -90,7 +90,7 @@ public class Login_Request extends AppCompatActivity {
                     DoiPassWord.Email=taikhoan.getEmail();//get Email
                     // hide Progress Dialog
                     prgDialog.dismiss();
-                    ToMain();
+                    ToMain();//trở về trang chủ
                 }
 
                 @Override
@@ -108,6 +108,7 @@ public class Login_Request extends AppCompatActivity {
 
     }
 
+    //hàm trở về trang chủ
     public void ToMain(){
         Intent loginIntent = new Intent(getApplicationContext(),MainActivity.class);
         // Clears History of Activity
@@ -115,6 +116,7 @@ public class Login_Request extends AppCompatActivity {
         startActivity(loginIntent);
     }
 
+    //hàm trở về trang đăng ký
     public void ToRegister(){
         Intent loginIntent = new Intent(getApplicationContext(),Register.class);
         // Clears History of Activity

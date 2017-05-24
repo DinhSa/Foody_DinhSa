@@ -78,7 +78,7 @@ public class DoiPassWord extends AppCompatActivity {
                     client.ChangePass("api/User/ChangePass", params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                            prgDialog.dismiss();
+                            prgDialog.dismiss();//ẩn pdialog
                             try {
                                 Boolean changed = Boolean.valueOf(new String(responseBody,"UTF-8"));
                                 if (changed)//trả về true

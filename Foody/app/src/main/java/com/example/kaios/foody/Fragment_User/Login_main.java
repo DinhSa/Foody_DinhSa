@@ -27,6 +27,7 @@ public class Login_main extends AppCompatActivity {
             }
         });
 
+        //click đăng ký tài khoản
         btnDangKyTaiKhoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,6 +36,7 @@ public class Login_main extends AppCompatActivity {
             }
         });
 
+        //click login bằng mail
         btnLoginEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +48,7 @@ public class Login_main extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume() {//đã login thì k click đc
         super.onResume();
         if(MainActivity.islogin)
             finish();

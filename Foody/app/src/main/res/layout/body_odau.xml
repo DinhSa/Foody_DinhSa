@@ -54,6 +54,7 @@
                     android:textSize="15sp"
                     android:text="Tên quán"
                     android:id="@+id/tvtenquan"
+                    android:lines="1"
                     android:maxLines="1"
                     android:textColor="@color/colorBlack"
                     android:textStyle="normal|bold" />
@@ -62,6 +63,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_height="wrap_content"
                     android:text="địa chỉ"
+                    android:lines="1"
                     android:maxLines="1"
                     android:id="@+id/tvdiadiem" />
 

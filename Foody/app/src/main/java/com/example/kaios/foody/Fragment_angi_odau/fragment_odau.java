@@ -20,9 +20,9 @@ import com.example.kaios.foody.Tabs.TabActivity_odau;
 
 public class fragment_odau extends Fragment {
 
-    public static boolean click1 =false;
-    public static boolean click2 =false;
-    public static boolean click3 =false;
+    public static boolean click1 =false;//đánh dấu chưa click tab
+    public static boolean click2 =false;//đánh dấu chưa click tab
+    public static boolean click3 =false;//đánh dấu chưa click tab
 
     public static FragmentTabHost mTabHost;
     @Override
