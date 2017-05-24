@@ -96,17 +96,18 @@ public class Adapter_Tab3_Odau extends BaseExpandableListAdapter {
             }
         });
 
+        //click
         tvHeader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String ten = (String) getGroup(groupPosition);
-                TextView txt=(TextView) fragment_odau.mTabHost.getTabWidget().getChildAt(3).findViewById(R.id.tabsText);
+                TextView txt=(TextView) fragment_odau.mTabHost.getTabWidget().getChildAt(3).findViewById(R.id.tabsText);//set text
                 TabActivity_3_odau.KieuDiaDiem="QuanHuyen";
                 TabActivity_3_odau.TenDiaDiem=ten;
                 txt.setText(ten);
-                txt.setTextColor(Color.RED);
-                fragment_odau.mTabHost.setCurrentTab(0);
-                MainActivity.mBottomBar.setVisibility(View.VISIBLE);
+                txt.setTextColor(Color.RED);//set red color
+                fragment_odau.mTabHost.setCurrentTab(0);//quay về tab chính
+                MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện bottombar
                 fragment_odau.click3=false;
             }
         });
@@ -134,10 +135,10 @@ public class Adapter_Tab3_Odau extends BaseExpandableListAdapter {
                 TextView txt=(TextView) fragment_odau.mTabHost.getTabWidget().getChildAt(3).findViewById(R.id.tabsText);
                 TabActivity_3_odau.KieuDiaDiem="DuongPho";
                 TabActivity_3_odau.TenDiaDiem=data;
-                txt.setText(data);
-                txt.setTextColor(Color.RED);
-                fragment_odau.mTabHost.setCurrentTab(0);
-                MainActivity.mBottomBar.setVisibility(View.VISIBLE);
+                txt.setText(data);//hiển thị tên đường
+                txt.setTextColor(Color.RED);//đổimàu đỏ
+                fragment_odau.mTabHost.setCurrentTab(0);//trở về tsb chính
+                MainActivity.mBottomBar.setVisibility(View.VISIBLE);//hiện bottombar
                 fragment_odau.click3=false;
             }
         });

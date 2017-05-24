@@ -32,7 +32,7 @@ public class TabActivity_angi extends Fragment {
     private RecyclerView recyclerView;
     private Adapter_angi AdapterRecy;
     private int imgHeader = R.drawable.qc;
-    private ArrayList<MonAn> listMonAn=new ArrayList<MonAn>();
+    private ArrayList<MonAn> listMonAn=new ArrayList<MonAn>();//khởi tạo list món ăn
 
     private int[] imgdanhmuc = {R.drawable.tc01, R.drawable.tc02, R.drawable.tc03,
             R.drawable.tc04, R.drawable.tc05, R.drawable.tc06,
@@ -64,8 +64,8 @@ public class TabActivity_angi extends Fragment {
 
 
         //loadData(Adapter_angi_tab2.nameDanhMuc);
-        AdapterRecy = new Adapter_angi(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listMonAn);
-        recyclerView.setAdapter(AdapterRecy);
+        AdapterRecy = new Adapter_angi(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listMonAn);//tạo adapter
+        recyclerView.setAdapter(AdapterRecy);//set adapter
         AdapterRecy.notifyDataSetChanged();
         return v;
     }
@@ -102,7 +102,7 @@ public class TabActivity_angi extends Fragment {
                     ProgressDialog progressDialog;
 
                     @Override
-                    public void onStart() {
+                    public void onStart() {//show dialog
                         progressDialog = new ProgressDialog(getContext(), R.style.DialogTheme);
                         progressDialog.setCancelable(false);
                         progressDialog.show();
@@ -113,13 +113,13 @@ public class TabActivity_angi extends Fragment {
                         listMonAn = new ArrayList<MonAn>();
                         for (int i = 0; i < response.length(); i++) {
                             try {
-                                listMonAn.add(new MonAn(response.getJSONObject(i)));
+                                listMonAn.add(new MonAn(response.getJSONObject(i)));//lấy data từ server
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
-                        AdapterRecy = new Adapter_angi(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listMonAn);
-                        recyclerView.setAdapter(AdapterRecy);
+                        AdapterRecy = new Adapter_angi(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listMonAn);//tạo adapter
+                        recyclerView.setAdapter(AdapterRecy);//set adapter
                         AdapterRecy.notifyDataSetChanged();
                     }
 

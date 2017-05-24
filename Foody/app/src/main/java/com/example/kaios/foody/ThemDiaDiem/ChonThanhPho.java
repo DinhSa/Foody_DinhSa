@@ -17,19 +17,19 @@ import java.util.ArrayList;
 import static com.example.kaios.foody.R.id.listTP;
 
 public class ChonThanhPho extends AppCompatActivity {
-    public static String nameTP_ThemDD="TP.HCM";
+    public static String nameTP_ThemDD="TP.HCM";//tên thành phố
     ListView list;
     Context context;
-    ArrayList<String> listTinhThanh;
+    ArrayList<String> listTinhThanh;//list thành phố
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chon_thanh_pho);
         Button BoQua=(Button)findViewById(R.id.btn_boqua);
         context=this;
-        loadDB();
+        loadDB();//load data
         list=(ListView)findViewById(listTP);
-        list.setAdapter(new Adapter_DoiTP(this, listTinhThanh));
+        list.setAdapter(new Adapter_DoiTP(this, listTinhThanh));//set adapter
 
         //click button bỏ qua
         BoQua.setOnClickListener(new View.OnClickListener() {
@@ -56,8 +56,8 @@ public class ChonThanhPho extends AppCompatActivity {
     //load DB
     public void loadDB(){
         DataBaseHandling db = new DataBaseHandling(this);
-        db.openDataBase();
-        listTinhThanh=db.getTinhThanh();
+        db.openDataBase();//mở database
+        listTinhThanh=db.getTinhThanh();//lấy tất cả tên thành phố
 
     }
 

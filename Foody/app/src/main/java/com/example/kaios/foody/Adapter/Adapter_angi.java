@@ -43,13 +43,13 @@ public class Adapter_angi extends RecyclerView.Adapter< RecyclerView.ViewHolder>
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder viewHolder;
-        if (viewType == HEADER) {
+        if (viewType == HEADER) {//hiển thị ảnh quảng cáo
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.imageview_header, parent, false);
             viewHolder = new Adapter_angi.HeaderItem(view);
-        } else if (viewType == DANHMUC){
+        } else if (viewType == DANHMUC){//hiển thị danh mục
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.girdview_danhmuc, parent, false);
             viewHolder = new Adapter_angi.DanhMucItem(view);
-        } else {
+        } else {//hiển thị quán ăn
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.body_angi, parent, false);
             viewHolder = new Adapter_angi.DataQuan(view);
         }
@@ -101,6 +101,7 @@ public class Adapter_angi extends RecyclerView.Adapter< RecyclerView.ViewHolder>
         public HeaderItem(View itemView) {
             super(itemView);
 
+            //slide hình
             viewFlipper = (ViewFlipper) itemView.findViewById(R.id.viewFlipper);
 
             viewFlipper.setFlipInterval(4000);

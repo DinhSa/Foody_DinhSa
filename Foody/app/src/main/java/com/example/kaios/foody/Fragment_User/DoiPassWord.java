@@ -21,7 +21,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class DoiPassWord extends AppCompatActivity {
     public static String Email;
-    private String nameEmailDangKy="Email đăng ký: " +Email;
+    private String nameEmailDangKy="Email đăng ký: " +Email;//hiển thị email
     public ProgressDialog prgDialog;
 
     @Override
@@ -29,6 +29,7 @@ public class DoiPassWord extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doi_pass_word);
 
+        //trỏ tới ID
         final EditText Oldpass=(EditText)findViewById(R.id.edt_oldpass);
         final EditText newpass=(EditText)findViewById(R.id.edit_passnew);
         final EditText confirm=(EditText)findViewById(R.id.edit_confirm);

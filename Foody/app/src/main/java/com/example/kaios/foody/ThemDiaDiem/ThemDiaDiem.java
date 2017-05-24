@@ -39,21 +39,21 @@ import cz.msebera.android.httpclient.extras.Base64;
 public class ThemDiaDiem extends AppCompatActivity {
 
     ProgressDialog prgDialog;
-    public static Button btnTP;
-    public static Button btnQuan;
-    public static TextView tvLoaiHinhDiaDiem;
-    public static TextView tvTenDuong;
+    public static Button btnTP;//button chọn thành phố
+    public static Button btnQuan;//button chọn quận
+    public static TextView tvLoaiHinhDiaDiem;//textView loại hình địa điểm
+    public static TextView tvTenDuong;//texview tên đường
     public static boolean chonquan=false; //đánh dấu dã chọn quận
     public static boolean chonLoaiHinhDiaDiem=false; //đánh dấu đã chọn lại địa hình
     public static boolean chonDuong=false;//đánh dấu đã chọn đường
-    public static int ID_MaDuong;
+    public static int ID_MaDuong;//mã đường
     public static int ID_danhmuc; //mã danh mục
-    String giobatdau = "09:00:00";
-    String gioketthuc = "21:00:00";
-    private static int REQUEST_LOAD_IMAGE = 1;
-    private static int REQUEST_CAMERA = 2;
+    String giobatdau = "09:00:00";//giờ bắt đầu
+    String gioketthuc = "21:00:00";//giờ kết thúc
+    private static int REQUEST_LOAD_IMAGE = 1;//chọn load ảnh từ device
+    private static int REQUEST_CAMERA = 2;//chọn load anh từ camera
     private Boolean Changed = false;//cờ đánh dấu đã chọn hình
-    private ImageView hinhThemDD;
+    private ImageView hinhThemDD;//hiển thị hình
     EditText edtDiaChi;
     EditText edtSDT;
     EditText GiaThap;
@@ -64,6 +64,7 @@ public class ThemDiaDiem extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_dia_diem);
 
+        //trỏ tới ID
         ImageView Back=(ImageView)findViewById(R.id.back_themdiadiem);
         btnTP=(Button)findViewById(R.id.btnTP);
         btnQuan=(Button)findViewById(R.id.btnQuan);
@@ -98,6 +99,7 @@ public class ThemDiaDiem extends AppCompatActivity {
                 // Set Cancelable as False
                 prgDialog.setCancelable(false);
 
+                //khai báo giá trị cần thêm
                 double Diem = 10;
                 double Lat = 9.6;
                 double Long = 6.9;
@@ -117,54 +119,54 @@ public class ThemDiaDiem extends AppCompatActivity {
 
                 double GiaThapNhat;
                 double GiaCaoNhat;
-                if(Utility.isNotNull(GiaCao1)&&Utility.isNotNull(GiaThap1)){
+                if(Utility.isNotNull(GiaCao1)&&Utility.isNotNull(GiaThap1)){//giá cao nhất và thấp nhất k rỗng
                     GiaThapNhat = Double.parseDouble(GiaThap1);
                     GiaCaoNhat = Double.parseDouble(GiaCao1);
                 }
-                else{
+                else{//ngược lại mặc định =0
                     GiaThapNhat= 0;
                     GiaCaoNhat=0;
                 }
                //
 
                 String Img;
-                if(Changed){
+                if(Changed){//đã load hình
                     //cover img to string
                     Img = getByteArrayFromImageView(hinhThemDD);
                 }
-                else {
+                else {//chưa thêm hình
                     Img=null;
                 }
 
-                if(chonquan){
+                if(chonquan){//kiểm tra chọn quận
 
-                    if(Utility.isNotNull(TenDiaDiem)){
+                    if(Utility.isNotNull(TenDiaDiem)){//kiểm tra điền địa điểm
 
-                        if(chonLoaiHinhDiaDiem){
+                        if(chonLoaiHinhDiaDiem){//kiểm tra chọn danh mục
 
-                            if(Utility.isNotNull(DiaChi)){
+                            if(Utility.isNotNull(DiaChi)){//kiểm tra điền địa chỉ
 
-                                if(chonDuong){
+                                if(chonDuong){//kiểm tra chọn đường
                                     ThemDiaDiem_Send(TenDiaDiem, DiaChi, Img, SDT , ID_MaDuong, ID_danhmuc, Diem, Lat, Long,
                                             TimeStart, TimeEnd, GiaThapNhat, GiaCaoNhat, MoTa, ThoiGianThem);
                                 }
-                                else {
+                                else {//chưa chọn đường
                                     Toast.makeText(getApplicationContext(), "Bạn chưa chọn đường!", Toast.LENGTH_LONG).show();
                                 }
                             }
-                            else {
+                            else {//chưa điền địa chỉ
                                 Toast.makeText(getApplicationContext(), "Bạn chưa điền đại chỉ!", Toast.LENGTH_LONG).show();
                             }
                         }
-                        else {
+                        else {//chưa chọn danh mục
                             Toast.makeText(getApplicationContext(), "Bạn chưa chọn loại hình địa điểm!", Toast.LENGTH_LONG).show();
                         }
                     }
-                    else {
+                    else {//chưa điền tên quán
                         Toast.makeText(getApplicationContext(), "Bạn chưa điền tên địa điểm!", Toast.LENGTH_LONG).show();
                     }
                 }
-                else {
+                else {//chưa chọn quận
                     Toast.makeText(getApplicationContext(), "Bạn chưa chọn quận!", Toast.LENGTH_LONG).show();
                 }
             }

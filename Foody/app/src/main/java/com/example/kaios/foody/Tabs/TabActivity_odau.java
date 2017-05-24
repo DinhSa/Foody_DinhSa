@@ -31,7 +31,7 @@ public class TabActivity_odau extends Fragment {
     private RecyclerView recyclerView;
     private Adapter_odau AdapterRecy;
     private int imgHeader = R.drawable.qc;
-    private ArrayList<QuanAn> listQuanAn=new ArrayList<QuanAn>();
+    private ArrayList<QuanAn> listQuanAn=new ArrayList<QuanAn>();//khởi tạo list quán ăn
 
     private int[] imgdanhmuc = {R.drawable.tc01, R.drawable.tc02, R.drawable.tc03,
             R.drawable.tc04, R.drawable.tc05, R.drawable.tc06,
@@ -113,13 +113,13 @@ public class TabActivity_odau extends Fragment {
                         listQuanAn = new ArrayList<QuanAn>();
                         for (int i = 0; i < response.length(); i++) {
                             try {
-                                listQuanAn.add(new QuanAn(response.getJSONObject(i)));
+                                listQuanAn.add(new QuanAn(response.getJSONObject(i)));//lấy dữ liệu từ server
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
-                        AdapterRecy = new Adapter_odau(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listQuanAn);
-                        recyclerView.setAdapter(AdapterRecy);
+                        AdapterRecy = new Adapter_odau(getContext(), imgHeader, imgdanhmuc, tvdanhmuc, listQuanAn);//tạo adapter
+                        recyclerView.setAdapter(AdapterRecy);//set adpater
                         AdapterRecy.notifyDataSetChanged();
                     }
 

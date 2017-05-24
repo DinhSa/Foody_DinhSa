@@ -46,8 +46,8 @@ public class ChonQuanTP extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TenQuan_ThemDD=ListQuan.get(position);//lấy Item tên quận
-                ThemDiaDiem.btnQuan.setText(TenQuan_ThemDD);
-                ThemDiaDiem.chonquan=true;
+                ThemDiaDiem.btnQuan.setText(TenQuan_ThemDD);//set name
+                ThemDiaDiem.chonquan=true;//đánh dấu đã chọn
                 finish();
             }
         });

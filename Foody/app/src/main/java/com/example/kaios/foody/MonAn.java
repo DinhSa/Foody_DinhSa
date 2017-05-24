@@ -31,11 +31,11 @@ public class MonAn {
         try {
             this.ID=object.getInt("id");
             this.tvTenMonAn = object.getString("TenMonAn");//lấy tên món ăn
-            this.tvTenQuanMonAn = object.getString("TenQuan");//
-            this.tvDiaDiemQuanMonAn = object.getString("DiaChi");
-            this.tvTenDuong = object.getString("TenDuong");
-            this.tvQuanHuyen = object.getString("TenQuanHuyen");
-            this.tvThanhPho = object.getString("TenThanhPho");
+            this.tvTenQuanMonAn = object.getString("TenQuan");//lấy tên quán
+            this.tvDiaDiemQuanMonAn = object.getString("DiaChi");//lấy địa chỉ
+            this.tvTenDuong = object.getString("TenDuong");//lấy tên đường
+            this.tvQuanHuyen = object.getString("TenQuanHuyen");//lấy tên quận
+            this.tvThanhPho = object.getString("TenThanhPho");//lấy tên thành phố
             //Xử lý hình ảnh
             byte[] byteArray =  Base64.decode(object.getString("HinhAnh"), Base64.DEFAULT) ;
             BitmapFactory.Options options = new BitmapFactory.Options();

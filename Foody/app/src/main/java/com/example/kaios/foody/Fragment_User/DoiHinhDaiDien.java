@@ -52,7 +52,7 @@ public class DoiHinhDaiDien extends AppCompatActivity {
 
         //hiển thị ảnh đại diện
         if(Fragment_User.HinhBitmap==null){
-            imgHinhDaiDien.setImageResource(R.mipmap.ic_daidien);
+            imgHinhDaiDien.setImageResource(R.mipmap.ic_daidien);//hiển thị hình mặc định
         }
         else {
             imgHinhDaiDien.setImageBitmap(Fragment_User.HinhBitmap);
@@ -88,7 +88,7 @@ public class DoiHinhDaiDien extends AppCompatActivity {
                 // Set Cancelable as False
                 prgDialog.setCancelable(false);
 
-                if(Change){
+                if(Change){//đã load hình
                     String img = getByteArrayFromImageView(imgHinhDaiDien);
                     ChangeImg(DoiPassWord.Email,img);
                 }
@@ -104,7 +104,7 @@ public class DoiHinhDaiDien extends AppCompatActivity {
 
     //change image
     public void ChangeImg(String Email, final String img){
-        prgDialog.show();
+        prgDialog.show();//hiện dialog
         StringEntity entity = null;
         try {
             JSONObject object = new JSONObject();

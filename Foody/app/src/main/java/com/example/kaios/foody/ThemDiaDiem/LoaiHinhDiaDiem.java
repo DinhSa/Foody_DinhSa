@@ -15,7 +15,7 @@ import java.util.Arrays;
 
 public class LoaiHinhDiaDiem extends AppCompatActivity {
     ListView lv;
-    private ArrayAdapter<String> listAdapter ;
+    private ArrayAdapter<String> listAdapter ;//
     public static String TenLoaiHinh;
 
     public static String [] prgmNameList={"Sang trọng","Buffet","Nhà hàng","Ăn vặt/vỉa hè",
@@ -58,10 +58,9 @@ public class LoaiHinhDiaDiem extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TenLoaiHinh=ListLoaiHinh.get(position);
-                ThemDiaDiem.ID_danhmuc=position+1;
-                ThemDiaDiem.tvLoaiHinhDiaDiem.setText(TenLoaiHinh);
-                ThemDiaDiem.chonLoaiHinhDiaDiem=true;
-
+                ThemDiaDiem.ID_danhmuc=position+1;//id danh mục
+                ThemDiaDiem.tvLoaiHinhDiaDiem.setText(TenLoaiHinh);//set name cho textview
+                ThemDiaDiem.chonLoaiHinhDiaDiem=true;//đánh dấu đã chọn
                 finish();
             }
         });

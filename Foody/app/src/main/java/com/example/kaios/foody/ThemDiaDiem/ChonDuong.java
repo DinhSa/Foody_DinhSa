@@ -71,7 +71,7 @@ public class ChonDuong extends AppCompatActivity {
     //get ID
     private int GetID(String TenDuong){
         DataBaseHandling db = new DataBaseHandling(this);
-        db.openDataBase();
-        return db.GetID(TenDuong);
+        db.openDataBase();//mở database
+        return db.GetID(TenDuong);//lấy ID theo tên đường
     }
 }

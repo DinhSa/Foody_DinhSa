@@ -20,12 +20,12 @@ public class QuanAn {
     public QuanAn(JSONObject object) {
         try {
             this.ID=object.getInt("id");
-            this.tvDiem=object.getDouble("Diem");
-            this.tvTen = object.getString("TenQuan");
-            this.tvDiaDiem = object.getString("DiaChi");
-            this.tvTenDuong = object.getString("TenDuong");
-            this.tvQuanHuyen = object.getString("TenQuanHuyen");
-            this.tvThanhPho = object.getString("TenThanhPho");
+            this.tvDiem=object.getDouble("Diem");//lấy điểm quán
+            this.tvTen = object.getString("TenQuan");//lấy tên quán
+            this.tvDiaDiem = object.getString("DiaChi");//lấy địa chỉ
+            this.tvTenDuong = object.getString("TenDuong");//lấy tên dường
+            this.tvQuanHuyen = object.getString("TenQuanHuyen");//lấy tên quận
+            this.tvThanhPho = object.getString("TenThanhPho");//lấy tên thành phố
             //Xử lý hình ảnh
             byte[] byteArray =  Base64.decode(object.getString("HinhAnh"), Base64.DEFAULT) ;
             BitmapFactory.Options options = new BitmapFactory.Options();
