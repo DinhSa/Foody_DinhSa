@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kaios.foody.Fragment_main.Fragment_home">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+
+            android:layout_gravity="fill_horizontal"
+            android:background="#FF0000"
+            android:id="@+id/relativeLayout">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_foody"
+                android:id="@+id/imgFoody"
+                android:padding="10dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/round_main_4">
+
+                <TextView
+                    android:text="Ở đâu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ODau"
+                    android:paddingBottom="5.0dp"
+                    android:paddingLeft="8.0dp"
+                    android:paddingRight="8.0dp"
+                    android:paddingTop="5.0dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:text="Ăn gì"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/AnGi"
+                    android:paddingBottom="5.0dp"
+                    android:paddingLeft="12.0dp"
+                    android:paddingRight="12.0dp"
+                    android:paddingTop="5.0dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/round_left_2"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_add"
+                android:id="@+id/imgPlus"
+                android:padding="10dp"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_below="@+id/relativeLayout" >
+        </android.support.v4.view.ViewPager>
+
+    </LinearLayout>
+</RelativeLayout>
